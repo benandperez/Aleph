@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PersonalReferences{% endblock %}
+
+{% block body %}
+    <h1>PersonalReferences</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ personal_reference.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ personal_reference.name }}</td>
+            </tr>
+            <tr>
+                <th>LastNames</th>
+                <td>{{ personal_reference.lastNames }}</td>
+            </tr>
+            <tr>
+                <th>BirthDay</th>
+                <td>{{ personal_reference.birthDay ? personal_reference.birthDay|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Ocupation</th>
+                <td>{{ personal_reference.ocupation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_personal_references_index') }}">back to list</a>
+
+    <a href="{{ path('app_personal_references_edit', {'id': personal_reference.id}) }}">edit</a>
+
+    {{ include('personal_references/_delete_form.html.twig') }}
+{% endblock %}

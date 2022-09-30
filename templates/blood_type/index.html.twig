@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BloodType index{% endblock %}
+
+{% block body %}
+    <h1>BloodType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for blood_type in blood_types %}
+            <tr>
+                <td>{{ blood_type.id }}</td>
+                <td>{{ blood_type.name }}</td>
+                <td>{{ blood_type.status ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_blood_type_show', {'id': blood_type.id}) }}">show</a>
+                    <a href="{{ path('app_blood_type_edit', {'id': blood_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_blood_type_new') }}">Create new</a>
+{% endblock %}

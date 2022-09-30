@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FamilyNucleus{% endblock %}
+
+{% block body %}
+    <h1>Create new FamilyNucleus</h1>
+
+    {{ include('family_nucleus/_form.html.twig') }}
+
+    <a href="{{ path('app_family_nucleus_index') }}">back to list</a>
+{% endblock %}

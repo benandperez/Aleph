@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CompanyPosition{% endblock %}
+
+{% block body %}
+    <h1>Create new CompanyPosition</h1>
+
+    {{ include('company_position/_form.html.twig') }}
+
+    <a href="{{ path('app_company_position_index') }}">back to list</a>
+{% endblock %}

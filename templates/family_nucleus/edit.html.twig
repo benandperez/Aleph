@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit FamilyNucleus{% endblock %}
+
+{% block body %}
+    <h1>Edit FamilyNucleus</h1>
+
+    {{ include('family_nucleus/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_family_nucleus_index') }}">back to list</a>
+
+    {{ include('family_nucleus/_delete_form.html.twig') }}
+{% endblock %}

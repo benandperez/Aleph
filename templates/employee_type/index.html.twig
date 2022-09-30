@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EmployeeType index{% endblock %}
+
+{% block body %}
+    <h1>EmployeeType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee_type in employee_types %}
+            <tr>
+                <td>{{ employee_type.id }}</td>
+                <td>{{ employee_type.name }}</td>
+                <td>{{ employee_type.status ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_employee_type_show', {'id': employee_type.id}) }}">show</a>
+                    <a href="{{ path('app_employee_type_edit', {'id': employee_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employee_type_new') }}">Create new</a>
+{% endblock %}

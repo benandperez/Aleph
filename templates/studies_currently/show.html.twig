@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StudiesCurrently{% endblock %}
+
+{% block body %}
+    <h1>StudiesCurrently</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ studies_currently.id }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ studies_currently.level }}</td>
+            </tr>
+            <tr>
+                <th>Institution</th>
+                <td>{{ studies_currently.institution }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ studies_currently.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_studies_currently_index') }}">back to list</a>
+
+    <a href="{{ path('app_studies_currently_edit', {'id': studies_currently.id}) }}">edit</a>
+
+    {{ include('studies_currently/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FamilyNucleus index{% endblock %}
+
+{% block body %}
+    <h1>FamilyNucleus index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>BirthDay</th>
+                <th>Age</th>
+                <th>Occupation</th>
+                <th>FirstNameSpouse</th>
+                <th>SecondNameSpouse</th>
+                <th>LastNameSpouse</th>
+                <th>MotherLastNameSpouse</th>
+                <th>MarriedLastNameSpouse</th>
+                <th>BirthDaySpouse</th>
+                <th>AgeSpouse</th>
+                <th>DocumentSpouse</th>
+                <th>Works</th>
+                <th>WorkPlace</th>
+                <th>JobPerforms</th>
+                <th>Salary</th>
+                <th>TimeSpouse</th>
+                <th>Dependent</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for family_nucleu in family_nuclei %}
+            <tr>
+                <td>{{ family_nucleu.id }}</td>
+                <td>{{ family_nucleu.firstName }}</td>
+                <td>{{ family_nucleu.lastName }}</td>
+                <td>{{ family_nucleu.birthDay ? family_nucleu.birthDay|date('Y-m-d') : '' }}</td>
+                <td>{{ family_nucleu.age }}</td>
+                <td>{{ family_nucleu.occupation }}</td>
+                <td>{{ family_nucleu.firstNameSpouse }}</td>
+                <td>{{ family_nucleu.secondNameSpouse }}</td>
+                <td>{{ family_nucleu.lastNameSpouse }}</td>
+                <td>{{ family_nucleu.motherLastNameSpouse }}</td>
+                <td>{{ family_nucleu.marriedLastNameSpouse }}</td>
+                <td>{{ family_nucleu.birthDaySpouse ? family_nucleu.birthDaySpouse|date('Y-m-d') : '' }}</td>
+                <td>{{ family_nucleu.ageSpouse }}</td>
+                <td>{{ family_nucleu.documentSpouse }}</td>
+                <td>{{ family_nucleu.works ? 'Yes' : 'No' }}</td>
+                <td>{{ family_nucleu.workPlace }}</td>
+                <td>{{ family_nucleu.jobPerforms }}</td>
+                <td>{{ family_nucleu.salary }}</td>
+                <td>{{ family_nucleu.timeSpouse }}</td>
+                <td>{{ family_nucleu.dependent ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_family_nucleus_show', {'id': family_nucleu.id}) }}">show</a>
+                    <a href="{{ path('app_family_nucleus_edit', {'id': family_nucleu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="21">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_family_nucleus_new') }}">Create new</a>
+{% endblock %}

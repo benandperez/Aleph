@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PlaceWork index{% endblock %}
+
+{% block body %}
+    <h1>PlaceWork index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for place_work in place_works %}
+            <tr>
+                <td>{{ place_work.id }}</td>
+                <td>{{ place_work.name }}</td>
+                <td>{{ place_work.address }}</td>
+                <td>{{ place_work.status ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_place_work_show', {'id': place_work.id}) }}">show</a>
+                    <a href="{{ path('app_place_work_edit', {'id': place_work.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_place_work_new') }}">Create new</a>
+{% endblock %}

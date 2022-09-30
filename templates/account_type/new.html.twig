@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AccountType{% endblock %}
+
+{% block body %}
+    <h1>Create new AccountType</h1>
+
+    {{ include('account_type/_form.html.twig') }}
+
+    <a href="{{ path('app_account_type_index') }}">back to list</a>
+{% endblock %}

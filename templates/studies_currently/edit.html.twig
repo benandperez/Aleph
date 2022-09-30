@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit StudiesCurrently{% endblock %}
+
+{% block body %}
+    <h1>Edit StudiesCurrently</h1>
+
+    {{ include('studies_currently/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_studies_currently_index') }}">back to list</a>
+
+    {{ include('studies_currently/_delete_form.html.twig') }}
+{% endblock %}

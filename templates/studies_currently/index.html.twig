@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StudiesCurrently index{% endblock %}
+
+{% block body %}
+    <h1>StudiesCurrently index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Level</th>
+                <th>Institution</th>
+                <th>Title</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for studies_currently in studies_currentlies %}
+            <tr>
+                <td>{{ studies_currently.id }}</td>
+                <td>{{ studies_currently.level }}</td>
+                <td>{{ studies_currently.institution }}</td>
+                <td>{{ studies_currently.title }}</td>
+                <td>
+                    <a href="{{ path('app_studies_currently_show', {'id': studies_currently.id}) }}">show</a>
+                    <a href="{{ path('app_studies_currently_edit', {'id': studies_currently.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_studies_currently_new') }}">Create new</a>
+{% endblock %}

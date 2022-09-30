@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Corregimiento{% endblock %}
+
+{% block body %}
+    <h1>Corregimiento</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ corregimiento.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ corregimiento.name }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ corregimiento.status ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_corregimiento_index') }}">back to list</a>
+
+    <a href="{{ path('app_corregimiento_edit', {'id': corregimiento.id}) }}">edit</a>
+
+    {{ include('corregimiento/_delete_form.html.twig') }}
+{% endblock %}

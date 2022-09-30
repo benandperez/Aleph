@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FinancialProfile{% endblock %}
+
+{% block body %}
+    <h1>FinancialProfile</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ financial_profile.id }}</td>
+            </tr>
+            <tr>
+                <th>Accounts</th>
+                <td>{{ financial_profile.accounts ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ financial_profile.name }}</td>
+            </tr>
+            <tr>
+                <th>CreditBalance</th>
+                <td>{{ financial_profile.creditBalance }}</td>
+            </tr>
+            <tr>
+                <th>CreditCard</th>
+                <td>{{ financial_profile.creditCard ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_financial_profile_index') }}">back to list</a>
+
+    <a href="{{ path('app_financial_profile_edit', {'id': financial_profile.id}) }}">edit</a>
+
+    {{ include('financial_profile/_delete_form.html.twig') }}
+{% endblock %}

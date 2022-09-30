@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New StudiesCurrently{% endblock %}
+
+{% block body %}
+    <h1>Create new StudiesCurrently</h1>
+
+    {{ include('studies_currently/_form.html.twig') }}
+
+    <a href="{{ path('app_studies_currently_index') }}">back to list</a>
+{% endblock %}
