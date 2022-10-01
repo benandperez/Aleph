@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
+        "ninsuo/symfony-collection": "^2.1",
         "sensio/framework-extra-bundle": "^6.2",
         "symfony/asset": "6.0.*",
         "symfony/console": "6.0.*",
@@ -61,10 +62,12 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "Fuz\\Symfony\\Collection\\ScriptHandler::postInstall"
         ],
         "post-update-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "Fuz\\Symfony\\Collection\\ScriptHandler::postUpdate"
         ]
     },
     "conflict": {
