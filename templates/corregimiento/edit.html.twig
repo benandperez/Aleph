@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Corregimiento{% endblock %}
+
+{% block body %}
+    <h1>Edit Corregimiento</h1>
+
+    {{ include('corregimiento/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_corregimiento_index') }}">back to list</a>
+
+    {{ include('corregimiento/_delete_form.html.twig') }}
+{% endblock %}

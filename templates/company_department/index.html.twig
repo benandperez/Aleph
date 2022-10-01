@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CompanyDepartment index{% endblock %}
+
+{% block body %}
+    <h1>CompanyDepartment index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for company_department in company_departments %}
+            <tr>
+                <td>{{ company_department.id }}</td>
+                <td>{{ company_department.name }}</td>
+                <td>{{ company_department.status ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_company_department_show', {'id': company_department.id}) }}">show</a>
+                    <a href="{{ path('app_company_department_edit', {'id': company_department.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_company_department_new') }}">Create new</a>
+{% endblock %}

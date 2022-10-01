@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PersonalReferences index{% endblock %}
+
+{% block body %}
+    <h1>PersonalReferences index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>LastNames</th>
+                <th>BirthDay</th>
+                <th>Ocupation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personal_reference in personal_references %}
+            <tr>
+                <td>{{ personal_reference.id }}</td>
+                <td>{{ personal_reference.name }}</td>
+                <td>{{ personal_reference.lastNames }}</td>
+                <td>{{ personal_reference.birthDay ? personal_reference.birthDay|date('Y-m-d') : '' }}</td>
+                <td>{{ personal_reference.ocupation }}</td>
+                <td>
+                    <a href="{{ path('app_personal_references_show', {'id': personal_reference.id}) }}">show</a>
+                    <a href="{{ path('app_personal_references_edit', {'id': personal_reference.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_personal_references_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PlaceWork{% endblock %}
+
+{% block body %}
+    <h1>Create new PlaceWork</h1>
+
+    {{ include('place_work/_form.html.twig') }}
+
+    <a href="{{ path('app_place_work_index') }}">back to list</a>
+{% endblock %}

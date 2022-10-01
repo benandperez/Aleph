@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EmployeeType{% endblock %}
+
+{% block body %}
+    <h1>EmployeeType</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ employee_type.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ employee_type.name }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ employee_type.status ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employee_type_index') }}">back to list</a>
+
+    <a href="{{ path('app_employee_type_edit', {'id': employee_type.id}) }}">edit</a>
+
+    {{ include('employee_type/_delete_form.html.twig') }}
+{% endblock %}

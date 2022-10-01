@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FamilyNucleus{% endblock %}
+
+{% block body %}
+    <h1>FamilyNucleus</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ family_nucleu.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ family_nucleu.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ family_nucleu.lastName }}</td>
+            </tr>
+            <tr>
+                <th>BirthDay</th>
+                <td>{{ family_nucleu.birthDay ? family_nucleu.birthDay|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ family_nucleu.age }}</td>
+            </tr>
+            <tr>
+                <th>Occupation</th>
+                <td>{{ family_nucleu.occupation }}</td>
+            </tr>
+            <tr>
+                <th>FirstNameSpouse</th>
+                <td>{{ family_nucleu.firstNameSpouse }}</td>
+            </tr>
+            <tr>
+                <th>SecondNameSpouse</th>
+                <td>{{ family_nucleu.secondNameSpouse }}</td>
+            </tr>
+            <tr>
+                <th>LastNameSpouse</th>
+                <td>{{ family_nucleu.lastNameSpouse }}</td>
+            </tr>
+            <tr>
+                <th>MotherLastNameSpouse</th>
+                <td>{{ family_nucleu.motherLastNameSpouse }}</td>
+            </tr>
+            <tr>
+                <th>MarriedLastNameSpouse</th>
+                <td>{{ family_nucleu.marriedLastNameSpouse }}</td>
+            </tr>
+            <tr>
+                <th>BirthDaySpouse</th>
+                <td>{{ family_nucleu.birthDaySpouse ? family_nucleu.birthDaySpouse|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>AgeSpouse</th>
+                <td>{{ family_nucleu.ageSpouse }}</td>
+            </tr>
+            <tr>
+                <th>DocumentSpouse</th>
+                <td>{{ family_nucleu.documentSpouse }}</td>
+            </tr>
+            <tr>
+                <th>Works</th>
+                <td>{{ family_nucleu.works ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>WorkPlace</th>
+                <td>{{ family_nucleu.workPlace }}</td>
+            </tr>
+            <tr>
+                <th>JobPerforms</th>
+                <td>{{ family_nucleu.jobPerforms }}</td>
+            </tr>
+            <tr>
+                <th>Salary</th>
+                <td>{{ family_nucleu.salary }}</td>
+            </tr>
+            <tr>
+                <th>TimeSpouse</th>
+                <td>{{ family_nucleu.timeSpouse }}</td>
+            </tr>
+            <tr>
+                <th>Dependent</th>
+                <td>{{ family_nucleu.dependent ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_family_nucleus_index') }}">back to list</a>
+
+    <a href="{{ path('app_family_nucleus_edit', {'id': family_nucleu.id}) }}">edit</a>
+
+    {{ include('family_nucleus/_delete_form.html.twig') }}
+{% endblock %}

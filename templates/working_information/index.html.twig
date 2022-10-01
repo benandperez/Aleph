@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}WorkingInformation index{% endblock %}
+
+{% block body %}
+    <h1>WorkingInformation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Since</th>
+                <th>Until</th>
+                <th>Business</th>
+                <th>PositionHeld</th>
+                <th>DirectBoss</th>
+                <th>ReferencePhone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for working_information in working_informations %}
+            <tr>
+                <td>{{ working_information.id }}</td>
+                <td>{{ working_information.since ? working_information.since|date('Y-m-d') : '' }}</td>
+                <td>{{ working_information.until ? working_information.until|date('Y-m-d') : '' }}</td>
+                <td>{{ working_information.business }}</td>
+                <td>{{ working_information.positionHeld }}</td>
+                <td>{{ working_information.directBoss }}</td>
+                <td>{{ working_information.referencePhone }}</td>
+                <td>
+                    <a href="{{ path('app_working_information_show', {'id': working_information.id}) }}">show</a>
+                    <a href="{{ path('app_working_information_edit', {'id': working_information.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_working_information_new') }}">Create new</a>
+{% endblock %}

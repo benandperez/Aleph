@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AccountType index{% endblock %}
+
+{% block body %}
+    <h1>AccountType index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for account_type in account_types %}
+            <tr>
+                <td>{{ account_type.id }}</td>
+                <td>{{ account_type.name }}</td>
+                <td>{{ account_type.status ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_account_type_show', {'id': account_type.id}) }}">show</a>
+                    <a href="{{ path('app_account_type_edit', {'id': account_type.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_account_type_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CompanyPosition index{% endblock %}
+
+{% block body %}
+    <h1>CompanyPosition index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for company_position in company_positions %}
+            <tr>
+                <td>{{ company_position.id }}</td>
+                <td>{{ company_position.name }}</td>
+                <td>{{ company_position.status ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_company_position_show', {'id': company_position.id}) }}">show</a>
+                    <a href="{{ path('app_company_position_edit', {'id': company_position.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_company_position_new') }}">Create new</a>
+{% endblock %}

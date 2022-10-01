@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EducationLevel index{% endblock %}
+
+{% block body %}
+    <h1>EducationLevel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Institution</th>
+                <th>Title</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for education_level in education_levels %}
+            <tr>
+                <td>{{ education_level.id }}</td>
+                <td>{{ education_level.institution }}</td>
+                <td>{{ education_level.title }}</td>
+                <td>
+                    <a href="{{ path('app_education_level_show', {'id': education_level.id}) }}">show</a>
+                    <a href="{{ path('app_education_level_edit', {'id': education_level.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_education_level_new') }}">Create new</a>
+{% endblock %}

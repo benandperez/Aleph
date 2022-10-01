@@ -1,17 +1,39 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_login.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Registro{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+<div class="account-box">
+    <div class="account-wrapper">
+        <h3 class="account-title">Registro</h3>
+        <p class="account-subtitle">Registrate</p>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_start(registrationForm) }}
+            <div class="form-group">
+                <label>Email<span class="mandatory">*</span></label>
+                {{ form_widget(registrationForm.email) }}
+            </div>
+    {#        {{ form_row(registrationForm.email) }}#}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <div class="form-group">
+                <label>Password<span class="mandatory">*</span></label>
+                {{ form_widget(registrationForm.plainPassword) }}
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        {{ form_widget(registrationForm.agreeTerms) }} Aceptar terminos y condiciones
+                    </label>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-primary account-btn" type="submit">Registrate</button>
+            </div>
+            <div class="account-footer">
+                <p>ya tienes una cuenta? <a href="{{ path('app_login') }}">Inicia sesion</a></p>
+            </div>
+
+        {{ form_end(registrationForm) }}
+    </div>
+</div>
 {% endblock %}

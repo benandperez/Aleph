@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FinancialProfile index{% endblock %}
+
+{% block body %}
+    <h1>FinancialProfile index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Accounts</th>
+                <th>Name</th>
+                <th>CreditBalance</th>
+                <th>CreditCard</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for financial_profile in financial_profiles %}
+            <tr>
+                <td>{{ financial_profile.id }}</td>
+                <td>{{ financial_profile.accounts ? 'Yes' : 'No' }}</td>
+                <td>{{ financial_profile.name }}</td>
+                <td>{{ financial_profile.creditBalance }}</td>
+                <td>{{ financial_profile.creditCard ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_financial_profile_show', {'id': financial_profile.id}) }}">show</a>
+                    <a href="{{ path('app_financial_profile_edit', {'id': financial_profile.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_financial_profile_new') }}">Create new</a>
+{% endblock %}
