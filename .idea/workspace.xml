@@ -11,19 +11,12 @@
       <change beforePath="$PROJECT_DIR$/.github/workflows/master_alephrrhh.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/workflows/master_rrhhaleph.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aleph.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/console" beforeDir="false" afterPath="$PROJECT_DIR$/bin/console" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/cache.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/cache.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/routing.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/routing.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" />
@@ -35,7 +28,6 @@
       <change beforePath="$PROJECT_DIR$/config/routes/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/framework.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-datetimepicker.min.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.css" beforeDir="false" />
@@ -450,38 +442,6 @@
       <change beforePath="$PROJECT_DIR$/src/Controller/VehicleTypesController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/WorkingInformationController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/AccountType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Bank.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/BloodType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/CompanyDepartment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/CompanyPosition.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Corregimiento.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/District.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/DocumentType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/EducationLevel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/EducationLevelType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/EmployeeType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Employees.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/FamilyNucleus.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/FinancialProfile.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Gender.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Language.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LanguageLevel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LicenseType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MaritalStatus.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/PersonalReferences.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/PlaceWork.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/PropertyStatus.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Province.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Prueba.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Relationship.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Roles.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/StudiesCurrently.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/VehicleFeatures.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/VehicleTypes.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/WorkingInformation.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/AccountTypeType.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/BankType.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/BloodTypeType.php" beforeDir="false" />
@@ -513,38 +473,6 @@
       <change beforePath="$PROJECT_DIR$/src/Form/VehicleTypesType.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/WorkingInformationType.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AccountTypeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BankRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BloodTypeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CompanyDepartmentRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CompanyPositionRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CorregimientoRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/DistrictRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/DocumentTypeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EducationLevelRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EducationLevelTypeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EmployeeTypeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EmployeesRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/FamilyNucleusRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/FinancialProfileRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/GenderRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LanguageLevelRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LanguageRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LicenseTypeRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MaritalStatusRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PersonalReferencesRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PlaceWorkRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyStatusRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ProvinceRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PruebaRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/RelationshipRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/RolesRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/StudiesCurrentlyRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/VehicleFeaturesRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/VehicleTypesRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/WorkingInformationRepository.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Util/TimeStampableEntity.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/startup.sh" beforeDir="false" />
@@ -780,6 +708,27 @@
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/psr/cache" />
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/proxy-manager-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
     </include_path>
   </component>
   <component name="ProjectId" id="2FVI5GC0aBLdLoSOVTNetcvvnAo" />
@@ -809,7 +758,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664570641981</updated>
-      <workItem from="1664570645175" duration="6697000" />
+      <workItem from="1664570645175" duration="7398000" />
     </task>
     <servers />
   </component>
