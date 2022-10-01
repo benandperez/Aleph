@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'RRHHALEPH'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2D5BA95890B141D591BE0FC04286CF9F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F08B37020FE9402EAE2D12874E6834E4 }}
           package: .
