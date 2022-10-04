@@ -63,7 +63,7 @@
                             <div class="dropdown profile-action">
                                 <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="{{ path('app_employees_edit', {'id': employee.id}) }}" data-bs-toggle="modal" data-bs-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Editar</a>
+                                    <a class="dropdown-item" href="{{ path('app_employees_edit', {'id': employee.id}) }}" data-bs-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Editar</a>
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_employee">
                                         {{ include('employees/_delete_form.html.twig') }}
                                     </a>

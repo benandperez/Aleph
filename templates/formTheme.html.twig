@@ -1,0 +1,17 @@
+{% block question_widget %}
+    <div class="row">
+        <div class="col-sm-5">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, {attr: {'required' : 'required'}}) }}
+        </div>
+        <div class="col-sm-6 js-quiz-answers-container">
+        <div class="col-sm-6 js-quiz-answers-container">
+            {{ form_widget(form.gender) }}
+        </div>
+            <div class="col-sm-1 p_t35">
+                <a href="#" class="quiz-question-add s33 link-question" title="Add element">+</a>
+                <a href="#" class="quiz-question-remove s33 link-question" title="Delete element">-</a>
+            </div>
+    </div>
+    <hr>
+{% endblock %}

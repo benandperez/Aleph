@@ -4,8 +4,7 @@ Luego de Descargar el proyecto, ejecutar los siguientes comandos en la consola, 
 2) composer install
 3) php bin/console doctrine:database:create (para crear la bd)
 4) php bin/console doctrine:schema:update --force (para crear tablas)
-5) yarn encore dev, si lo tiene el .env en produccion, ejecutar yarn encore prod
-6) php bin/console doctrine:fixtures:load (para crear data en las tablas)
+5) yarn encore dev, si lo tiene el .env en produccion, ejecutar yarn encore pr(para crear data en las tablas)
 
 Puedes ejecutar estos comandos tambien para la migracion de la data
 

@@ -39,7 +39,7 @@ class PersonalReferencesType extends AbstractType
                 'widget' => 'single_text',
                 'html5' => false,
                 'label' => 'Fecha de nacimiento: ',
-                'format' => 'dd-MM-yyyy',
+                'format' => 'yyyy-MM-dd',
                 'attr' => [
                     'class' => 'form-control datetimepicker'
                 ],
@@ -80,7 +80,6 @@ class PersonalReferencesType extends AbstractType
                 'label' => 'Relación familiar: ',
                 'attr' => [
                     'class' => 'select',
-                    'placeholder' => 'Relación familiar',
                 ],
             ])
         ;

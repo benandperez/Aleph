@@ -1,7 +1,13 @@
 
 {% block body %}
+    {%
+        form_theme form
+        'jquery.collection.html.twig'
+    %}
+    {% form_theme form.personalReferences 'formTheme.html.twig' %}
 
 {{ form_start(form) }}
+
     <div class="content container-fluid">
         <!-- Page Header -->
         <div class="page-header">
@@ -9,7 +15,7 @@
                 <div class="col-sm-12">
                     <h3 class="page-title">Perfil / {{ employee.getFullName }}</h3>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('app_dashboard') }}">Dashboard</a></li>
                         <li class="breadcrumb-item active">Perfil</li>
                     </ul>
                 </div>
@@ -25,6 +31,7 @@
                                     <a href="#"><img alt="" src="{{ asset('assets/img/profiles/avatar-02.jpg') }}"></a>
                                 </div>
                             </div>
+                            {#profile-basic#}
                             <div class="profile-basic">
                                 <div class="row">
                                     <div class="col-md-5">
@@ -74,13 +81,13 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="col-form-label">{{ form_label(form.expirationDate) }}<span class="text-danger"> *</span></label>
-                                                        <div class="cal-icon">{{ form_widget(form.expirationDate) }}</div>
+                                                        <div class="cal-icon">{{ form_widget(form.expirationDate, {'attr': {'class': 'form-control datetimepicker'}}) }}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label class="col-form-label">{{ form_label(form.birthDay) }} <span class="text-danger"> *</span></label>
-                                                        <div class="cal-icon">{{ form_widget(form.birthDay) }}</div>
+                                                        <div class="cal-icon">{{ form_widget(form.birthDay, {'attr': {'class': 'form-control datetimepicker'}}) }}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,7 +176,12 @@
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
-                                <h3 class="card-title">Personal Informations <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#personal_info_modal"><i class="fa fa-pencil"></i></a></h3>
+                                <h3 class="card-title">Personal Informations
+                                    {% if employee.id is not empty %}
+                                        <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon" data-bs-target="#personal_info_modal"><i class="fa fa-pencil"></i>
+                                        </a>
+                                    {% endif %}
+                                </h3>
                                 <ul class="personal-info">
                                     {# Inicio Tabla #}
                                     <div class="row">
@@ -292,7 +304,12 @@
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
-                                <h3 class="card-title">Emergency Contact <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#emergency_contact_modal"><i class="fa fa-pencil"></i></a></h3>
+                                <h3 class="card-title">Emergency Contact
+                                    {% if employee.id is not empty %}
+                                        <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon" data-bs-target="#emergency_contact_modal"><i class="fa fa-pencil"></i>
+                                        </a>
+                                    {% endif %}
+                                </h3>
                                 <h5 class="section-title">Primary</h5>
                                 <ul class="personal-info">
                                     {# Inicio Tabla #}
@@ -529,7 +546,12 @@
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
-                                <h3 class="card-title">Education Informations <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#education_info"><i class="fa fa-pencil"></i></a></h3>
+                                <h3 class="card-title">Education Informations
+                                    {% if employee.id is not empty %}
+                                        <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon"  data-bs-target="#education_info"><i class="fa fa-pencil"></i>
+                                        </a>
+                                    {% endif %}
+                                </h3>
                                 <div class="experience-box">
                                     <ul class="experience-list">
                                         <li>
@@ -565,7 +587,12 @@
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
-                                <h3 class="card-title">Experience <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#experience_info"><i class="fa fa-pencil"></i></a></h3>
+                                <h3 class="card-title">Experience
+                                    {% if employee.id is not empty %}
+                                        <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon" data-bs-target="#experience_info"><i class="fa fa-pencil"></i>
+                                        </a>
+                                    {% endif %}
+                                </h3>
                                 <div class="experience-box">
                                     <ul class="experience-list">
                                         <li>
@@ -612,7 +639,12 @@
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
-                                <h3 class="card-title">Referencias personales <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#family_info_modal"><i class="fa fa-pencil"></i></a></h3>
+                                <h3 class="card-title">Referencias personales
+                                    {% if employee.id is not empty %}
+                                        <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon" data-bs-target="#family_info_modal"><i class="fa fa-pencil"></i>
+                                        </a>
+                                    {% endif %}
+                                </h3>
                                 {{ form_row(form.personalReferences) }}
                             </div>
                         </div>
@@ -621,7 +653,12 @@
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
-                                <h3 class="card-title">Family Informations <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#family_info_modal"><i class="fa fa-pencil"></i></a></h3>
+                                <h3 class="card-title">Family Informations
+                                    {% if employee.id is not empty %}
+                                        <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon" data-bs-target="#family_info_modal"><i class="fa fa-pencil"></i>
+                                        </a>
+                                    {% endif %}
+                                </h3>
                                 <div class="table-responsive">
                                     <table class="table table-nowrap">
                                         <thead>
@@ -673,7 +710,11 @@
 
 
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
-    {{ form_end(form, {render_rest: false}) }}
+    <button class="btn btn-primary submit-btn">{{ button_label|default('Save') }}</button>
+
+{#    {{ form_end(form, {render_rest: false}) }}#}
+{#    {{ form_rest(form) }}#}
+    {{ form_end(form) }}
+
 
 {% endblock %}

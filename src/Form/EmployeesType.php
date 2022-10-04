@@ -15,6 +15,7 @@ use App\Entity\LicenseType;
 use App\Entity\MaritalStatus;
 use App\Entity\PlaceWork;
 use App\Entity\Province;
+use App\Util\DateTimeTransformer;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -31,6 +32,7 @@ class EmployeesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         $builder
             //Perfil
             ->add('firstName', null, [
@@ -69,15 +71,15 @@ class EmployeesType extends AbstractType
                     'class' => 'form-control'
                 ],
             ])
-            ->add('marriedLastName', null, [
-                'required' => true,
-                'label' => 'Apellido de casada: ',
-                'attr' => [
-                    'autocomplete' => 'off',
-                    'placeholder' => 'Apellido de casada',
-                    'class' => 'form-control'
-                ],
-            ])
+//            ->add('marriedLastName', null, [
+//                'required' => false,
+//                'label' => 'Apellido de casada: ',
+//                'attr' => [
+//                    'autocomplete' => 'off',
+//                    'placeholder' => 'Apellido de casada',
+//                    'class' => 'form-control'
+//                ],
+//            ])
             ->add('nationality', null, [
                 'required' => true,
                 'label' => 'Nacionalidad: ',
@@ -113,7 +115,7 @@ class EmployeesType extends AbstractType
                 'widget' => 'single_text',
                 'html5' => false,
                 'label' => 'Fecha de expiración: ',
-                'format' => 'dd-MM-yyyy',
+                'format' => 'yyyy-MM-dd',
                 'attr' => [
                     'class' => 'form-control datetimepicker'
                 ],
@@ -122,7 +124,8 @@ class EmployeesType extends AbstractType
                 'widget' => 'single_text',
                 'html5' => false,
                 'label' => 'Fecha de nacimiento: ',
-                'format' => 'dd-MM-yyyy',
+                'input_format' => 'Y-m-d',
+                'format' => 'yyyy-MM-dd',
                 'attr' => [
                     'class' => 'form-control datetimepicker'
                 ],
@@ -298,7 +301,7 @@ class EmployeesType extends AbstractType
                 'html5' => false,
                 'required' => true,
                 'label' => 'Fecha de expiración: ',
-                'format' => 'dd-MM-yyyy',
+                'format' => 'yyyy-MM-dd',
                 'attr' => [
                     'class' => 'form-control datetimepicker'
                 ],
@@ -478,7 +481,7 @@ class EmployeesType extends AbstractType
                 'html5' => false,
                 'required' => true,
                 'label' => 'Fecha de ingreso a la empresa: ',
-                'format' => 'dd-MM-yyyy',
+                'format' => 'yyyy-MM-dd',
                 'attr' => [
                     'class' => 'form-control datetimepicker'
                 ],
@@ -532,7 +535,7 @@ class EmployeesType extends AbstractType
                 'required'     => false,
                 'delete_empty' => true,
                 'attr' => array(
-                    'class' => 'my-selector',
+                    'class' => 'reference-collection',
                 ),
                 'entry_options' => [
                     'label' => false,
@@ -540,12 +543,34 @@ class EmployeesType extends AbstractType
             ])
             
             ;
+
+//        $builder
+//            ->add('expirationDate', TextType::class, array(
+//                'required' => true,
+//                'label' => 'exp',
+//                'translation_domain' => 'App',
+//                'attr' => array(
+//                    'class' => 'form-control input-inline datetimepicker',
+//                    'data-provide' => 'datepicker',
+//                    'data-format' => 'dd-mm-yyyy',
+//                ),
+//            ))
+//
+//        ;
+//
+//        $builder->get('expirationDate')
+//            ->addModelTransformer(new DateTimeTransformer());
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Employees::class,
+            'intention'  => 'edit',
         ]);
+    }
+    public function getName()
+    {
+        return 'employees_edit';
     }
 }

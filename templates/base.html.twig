@@ -72,10 +72,6 @@
                         </div>
                     </div>
                     {% block body %}
-                        {%
-                            form_theme form
-                            'jquery.collection.html.twig'
-                        %}
                     {% endblock %}
 
                 </div>
@@ -114,17 +110,30 @@
         {% endblock %}
         {% block myScripts %}
         <script type="text/javascript">
-            $(document).ready(function(){
-                $('.my-selector').collection({
+                $('.reference-collection').collection({
                     allow_down: false,
                     allow_up:false,
                     min: 1,
-                    prefix: 'quiz-question',
+                    prefix: 'personal-reference',
                 });
-            });
+                $(document).ready(function(){
+
+                    $('.datetimepicker').each (function(){
+                        // $(this).datetimepicker({
+                        //     dateFormat: 'dd/mm/yy',
+                        // });
+                        const str = $(this).attr("value");
+
+                        const [year ,month , day] = str.split('-');
+                        $(this).val(day+"/"+month+"/"+year)
+
+                    });
+
+                });
+        </script>
         {% endblock %}
 
     </script>
- 
+
     </body>
 </html>

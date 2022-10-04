@@ -6,6 +6,11 @@
 parameters:
 
 services:
+    app.form.type.employees_edit:
+        class: App\Form\EmployeesType
+        arguments: [ App\Entity\Employees ]
+        tags:
+            - { name: form.type, alias: employees_edit }
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

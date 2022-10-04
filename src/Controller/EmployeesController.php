@@ -31,21 +31,13 @@ class EmployeesController extends AbstractController
         $form = $this->createForm(EmployeesType::class, $employee);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-//            foreach ($employee->getPersonalReferences() as $item) {
-////                dump($item);
-////               $personalReference = new PersonalReferences($item);
-////               $personalReference->setName($item->getName());
-////               $personalReference->setBirthDay($item->getBirthDay());
-////
-//////                $personalReference =  $personalReferencesRepository->add($item,true);
-////                dd($personalReference);
-//                $employee->addPersonalReference($item);
-//
-//            }
-//            dump($employee->getPersonalReferences());
-//            dd($request->request);
-//            $employee->addPersonalReference()
+//        dd($employee, $request, $form);
+
+        if ($form->isSubmitted()) {
+            $orderDate = "Y/m/d";
+
+
+            $this->setDate($request, $employee,$orderDate, $personalReferencesRepository);
             $employeesRepository->add($employee, true);
 
             return $this->redirectToRoute('app_employees_index', [], Response::HTTP_SEE_OTHER);
@@ -66,16 +58,22 @@ class EmployeesController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_employees_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Employees $employee, EmployeesRepository $employeesRepository): Response
+    public function edit(Request $request, Employees $employee, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository): Response
     {
         $form = $this->createForm(EmployeesType::class, $employee);
         $form->handleRequest($request);
+        $orderDate = "d/m/Y";
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
+            $orderDate = "Y/m/d";
+
+            $this->setDate($request, $employee, $orderDate, $personalReferencesRepository);
             $employeesRepository->add($employee, true);
 
             return $this->redirectToRoute('app_employees_index', [], Response::HTTP_SEE_OTHER);
         }
+        $this->setDate($request, $employee, $orderDate, $personalReferencesRepository);
+//        dd($employee, $form);
 
         return $this->renderForm('employees/edit.html.twig', [
             'employee' => $employee,
@@ -91,5 +89,41 @@ class EmployeesController extends AbstractController
         }
 
         return $this->redirectToRoute('app_employees_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function setDate($request, $employee, $orderDate, $personalReferencesRepository)
+    {
+
+        if (count($request->request->all()) > 0){
+            $date = explode("/", $request->request->all()["employees"]["expirationDate"]);
+            $dateExpirationDate = new \DateTime( date($orderDate, strtotime($date[2]."-".$date[1]."-".$date[0])));
+
+            $date = explode("/", $request->request->all()["employees"]["birthDay"]);
+            $dateBirthDay = new \DateTime(date($orderDate, strtotime($date[2]."-".$date[1]."-".$date[0])));
+
+            $date = explode("/", $request->request->all()["employees"]["expirationDateLicense"]);
+            $dateExpirationDateLicense = new \DateTime(date($orderDate, strtotime($date[2]."-".$date[1]."-".$date[0])));
+
+            $date = explode("/", $request->request->all()["employees"]["dateJoiningCompany"]);
+            $dateDateJoiningCompany = new \DateTime(date($orderDate, strtotime($date[2]."-".$date[1]."-".$date[0])));
+
+
+            $employee->setExpirationDate($dateExpirationDate);
+            $employee->setBirthDay($dateBirthDay);
+            $employee->setExpirationDateLicense($dateExpirationDateLicense);
+            $employee->setDateJoiningCompany($dateDateJoiningCompany);
+            if (count($employee->getPersonalReferences()) > 0) {
+                foreach ($request->request->all()["employees"]["personalReferences"] as $personalReference) {
+                    $date = explode("/", $personalReference["birthDay"]);
+                    $datePersonalReference = new \DateTime(date($orderDate, strtotime( $date[2]."-".$date[1]."-".$date[0] )));
+
+                    foreach ($employee->getPersonalReferences() as $item) {
+                        $item->setBirthDay($datePersonalReference);
+                        $personalReferencesRepository->add($item,true);
+                    }
+                }
+            }
+        }
+
     }
 }
