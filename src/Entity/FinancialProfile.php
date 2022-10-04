@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\FinancialProfileRepository;
 use App\Util\TimeStampableEntity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FinancialProfileRepository::class)]
@@ -30,6 +32,14 @@ class FinancialProfile
 
     #[ORM\ManyToOne(inversedBy: 'financialProfiles')]
     private ?AccountType $accountType = null;
+
+    #[ORM\ManyToMany(targetEntity: Employees::class, mappedBy: 'financialProfile')]
+    private Collection $employees;
+
+    public function __construct()
+    {
+        $this->employees = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -92,6 +102,33 @@ class FinancialProfile
     public function setAccountType(?AccountType $accountType): self
     {
         $this->accountType = $accountType;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Employees>
+     */
+    public function getEmployees(): Collection
+    {
+        return $this->employees;
+    }
+
+    public function addEmployee(Employees $employee): self
+    {
+        if (!$this->employees->contains($employee)) {
+            $this->employees->add($employee);
+            $employee->addFinancialProfile($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmployee(Employees $employee): self
+    {
+        if ($this->employees->removeElement($employee)) {
+            $employee->removeFinancialProfile($this);
+        }
 
         return $this;
     }

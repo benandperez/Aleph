@@ -159,10 +159,18 @@ class Employees
     #[ORM\ManyToMany(targetEntity: PersonalReferences::class, inversedBy: 'employees', cascade: ['persist'])]
     private Collection $personalReferences;
 
+    #[ORM\ManyToMany(targetEntity: FamilyNucleus::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $familyNucleus;
+
+    #[ORM\ManyToMany(targetEntity: FinancialProfile::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $financialProfile;
+
     public function __construct()
     {
         $this->placeWork = new ArrayCollection();
         $this->personalReferences = new ArrayCollection();
+        $this->familyNucleus = new ArrayCollection();
+        $this->financialProfile = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -749,6 +757,54 @@ class Employees
     public function removePersonalReference(PersonalReferences $personalReference): self
     {
         $this->personalReferences->removeElement($personalReference);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FamilyNucleus>
+     */
+    public function getFamilyNucleus(): Collection
+    {
+        return $this->familyNucleus;
+    }
+
+    public function addFamilyNucleu(FamilyNucleus $familyNucleu): self
+    {
+        if (!$this->familyNucleus->contains($familyNucleu)) {
+            $this->familyNucleus->add($familyNucleu);
+        }
+
+        return $this;
+    }
+
+    public function removeFamilyNucleu(FamilyNucleus $familyNucleu): self
+    {
+        $this->familyNucleus->removeElement($familyNucleu);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FinancialProfile>
+     */
+    public function getFinancialProfile(): Collection
+    {
+        return $this->financialProfile;
+    }
+
+    public function addFinancialProfile(FinancialProfile $financialProfile): self
+    {
+        if (!$this->financialProfile->contains($financialProfile)) {
+            $this->financialProfile->add($financialProfile);
+        }
+
+        return $this;
+    }
+
+    public function removeFinancialProfile(FinancialProfile $financialProfile): self
+    {
+        $this->financialProfile->removeElement($financialProfile);
 
         return $this;
     }

@@ -451,6 +451,8 @@
                                         </div>
                                     </div>
                                     {# fin Tabla #}
+
+                                    {{ form_row(form.financialProfile) }}
                                 </ul>
                             </div>
                         </div>
@@ -659,36 +661,7 @@
                                         </a>
                                     {% endif %}
                                 </h3>
-                                <div class="table-responsive">
-                                    <table class="table table-nowrap">
-                                        <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Relationship</th>
-                                            <th>Date of Birth</th>
-                                            <th>Phone</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Leo</td>
-                                            <td>Brother</td>
-                                            <td>Feb 16th, 2019</td>
-                                            <td>9876543210</td>
-                                            <td class="text-end">
-                                                <div class="dropdown dropdown-action">
-                                                    <a aria-expanded="false" data-bs-toggle="dropdown" class="action-icon dropdown-toggle" href="#"><i class="material-icons">more_vert</i></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" class="dropdown-item"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                        <a href="#" class="dropdown-item"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                {{ form_row(form.familyNucleus) }}
                             </div>
                         </div>
                     </div>
