@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecdbe0f6-f04a-4b5e-ac14-c52c539768d0" name="Changes" comment="commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/EducationLevel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/EducationLevel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Employees.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/StudiesCurrently.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/StudiesCurrently.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EducationLevelType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EducationLevelType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EmployeesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EmployeesType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/StudiesCurrentlyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/StudiesCurrentlyType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/employees/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +149,7 @@
       <workItem from="1664808325132" duration="24458000" />
       <workItem from="1664845946144" duration="18764000" />
       <workItem from="1664904711236" duration="597000" />
-      <workItem from="1664930914193" duration="4084000" />
+      <workItem from="1664930914193" duration="4406000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1664586862261</created>
