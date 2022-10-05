@@ -165,12 +165,20 @@ class Employees
     #[ORM\ManyToMany(targetEntity: FinancialProfile::class, inversedBy: 'employees', cascade: ['persist'])]
     private Collection $financialProfile;
 
+    #[ORM\ManyToMany(targetEntity: StudiesCurrently::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $studiesCurrently;
+
+    #[ORM\ManyToMany(targetEntity: EducationLevel::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $educationLevel;
+
     public function __construct()
     {
         $this->placeWork = new ArrayCollection();
         $this->personalReferences = new ArrayCollection();
         $this->familyNucleus = new ArrayCollection();
         $this->financialProfile = new ArrayCollection();
+        $this->studiesCurrently = new ArrayCollection();
+        $this->educationLevel = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -805,6 +813,54 @@ class Employees
     public function removeFinancialProfile(FinancialProfile $financialProfile): self
     {
         $this->financialProfile->removeElement($financialProfile);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, StudiesCurrently>
+     */
+    public function getStudiesCurrently(): Collection
+    {
+        return $this->studiesCurrently;
+    }
+
+    public function addStudiesCurrently(StudiesCurrently $studiesCurrently): self
+    {
+        if (!$this->studiesCurrently->contains($studiesCurrently)) {
+            $this->studiesCurrently->add($studiesCurrently);
+        }
+
+        return $this;
+    }
+
+    public function removeStudiesCurrently(StudiesCurrently $studiesCurrently): self
+    {
+        $this->studiesCurrently->removeElement($studiesCurrently);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EducationLevel>
+     */
+    public function getEducationLevel(): Collection
+    {
+        return $this->educationLevel;
+    }
+
+    public function addEducationLevel(EducationLevel $educationLevel): self
+    {
+        if (!$this->educationLevel->contains($educationLevel)) {
+            $this->educationLevel->add($educationLevel);
+        }
+
+        return $this;
+    }
+
+    public function removeEducationLevel(EducationLevel $educationLevel): self
+    {
+        $this->educationLevel->removeElement($educationLevel);
 
         return $this;
     }

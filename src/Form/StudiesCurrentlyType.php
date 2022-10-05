@@ -12,9 +12,33 @@ class StudiesCurrentlyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('level')
-            ->add('institution')
-            ->add('title')
+            ->add('level', null, [
+                'required' => true,
+                'label' => 'Nivel Educativo: ',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'placeholder' => 'Nivel Educativo',
+                    'class' => 'form-control'
+                ],
+            ])
+            ->add('institution', null, [
+                'required' => true,
+                'label' => 'Institución: ',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'placeholder' => 'Institución',
+                    'class' => 'form-control'
+                ],
+            ])
+            ->add('title', null, [
+                'required' => true,
+                'label' => 'Título Obtenido: ',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'placeholder' => 'Título Obtenido',
+                    'class' => 'form-control'
+                ],
+            ])
         ;
     }
 

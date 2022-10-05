@@ -575,6 +575,38 @@ class EmployeesType extends AbstractType
                     'label' => false,
                 ],
             ])
+
+            ->add('studiesCurrently', CollectionType::class, [
+                'entry_type' => StudiesCurrentlyType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'studiesCurrently-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
+
+            ->add('educationLevel', CollectionType::class, [
+                'entry_type' => EducationLevelType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'educationLevel-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
             
             ;
     }
