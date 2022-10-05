@@ -159,10 +159,26 @@ class Employees
     #[ORM\ManyToMany(targetEntity: PersonalReferences::class, inversedBy: 'employees', cascade: ['persist'])]
     private Collection $personalReferences;
 
+    #[ORM\ManyToMany(targetEntity: FamilyNucleus::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $familyNucleus;
+
+    #[ORM\ManyToMany(targetEntity: FinancialProfile::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $financialProfile;
+
+    #[ORM\ManyToMany(targetEntity: StudiesCurrently::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $studiesCurrently;
+
+    #[ORM\ManyToMany(targetEntity: EducationLevel::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $educationLevel;
+
     public function __construct()
     {
         $this->placeWork = new ArrayCollection();
         $this->personalReferences = new ArrayCollection();
+        $this->familyNucleus = new ArrayCollection();
+        $this->financialProfile = new ArrayCollection();
+        $this->studiesCurrently = new ArrayCollection();
+        $this->educationLevel = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -749,6 +765,102 @@ class Employees
     public function removePersonalReference(PersonalReferences $personalReference): self
     {
         $this->personalReferences->removeElement($personalReference);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FamilyNucleus>
+     */
+    public function getFamilyNucleus(): Collection
+    {
+        return $this->familyNucleus;
+    }
+
+    public function addFamilyNucleu(FamilyNucleus $familyNucleu): self
+    {
+        if (!$this->familyNucleus->contains($familyNucleu)) {
+            $this->familyNucleus->add($familyNucleu);
+        }
+
+        return $this;
+    }
+
+    public function removeFamilyNucleu(FamilyNucleus $familyNucleu): self
+    {
+        $this->familyNucleus->removeElement($familyNucleu);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FinancialProfile>
+     */
+    public function getFinancialProfile(): Collection
+    {
+        return $this->financialProfile;
+    }
+
+    public function addFinancialProfile(FinancialProfile $financialProfile): self
+    {
+        if (!$this->financialProfile->contains($financialProfile)) {
+            $this->financialProfile->add($financialProfile);
+        }
+
+        return $this;
+    }
+
+    public function removeFinancialProfile(FinancialProfile $financialProfile): self
+    {
+        $this->financialProfile->removeElement($financialProfile);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, StudiesCurrently>
+     */
+    public function getStudiesCurrently(): Collection
+    {
+        return $this->studiesCurrently;
+    }
+
+    public function addStudiesCurrently(StudiesCurrently $studiesCurrently): self
+    {
+        if (!$this->studiesCurrently->contains($studiesCurrently)) {
+            $this->studiesCurrently->add($studiesCurrently);
+        }
+
+        return $this;
+    }
+
+    public function removeStudiesCurrently(StudiesCurrently $studiesCurrently): self
+    {
+        $this->studiesCurrently->removeElement($studiesCurrently);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EducationLevel>
+     */
+    public function getEducationLevel(): Collection
+    {
+        return $this->educationLevel;
+    }
+
+    public function addEducationLevel(EducationLevel $educationLevel): self
+    {
+        if (!$this->educationLevel->contains($educationLevel)) {
+            $this->educationLevel->add($educationLevel);
+        }
+
+        return $this;
+    }
+
+    public function removeEducationLevel(EducationLevel $educationLevel): self
+    {
+        $this->educationLevel->removeElement($educationLevel);
 
         return $this;
     }

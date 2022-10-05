@@ -10,6 +10,7 @@ use App\Entity\District;
 use App\Entity\DocumentType;
 use App\Entity\Employees;
 use App\Entity\EmployeeType;
+use App\Entity\FamilyNucleus;
 use App\Entity\Gender;
 use App\Entity\LicenseType;
 use App\Entity\MaritalStatus;
@@ -541,25 +542,73 @@ class EmployeesType extends AbstractType
                     'label' => false,
                 ],
             ])
+
+
+            ->add('familyNucleus', CollectionType::class, [
+                'entry_type' => FamilyNucleusType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'familyNucleus-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
+
+            ->add('financialProfile', CollectionType::class, [
+                'entry_type' => FinancialProfileType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'financialProfile-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
+
+            ->add('studiesCurrently', CollectionType::class, [
+                'entry_type' => StudiesCurrentlyType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'studiesCurrently-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
+
+            ->add('educationLevel', CollectionType::class, [
+                'entry_type' => EducationLevelType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'educationLevel-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
             
             ;
-
-//        $builder
-//            ->add('expirationDate', TextType::class, array(
-//                'required' => true,
-//                'label' => 'exp',
-//                'translation_domain' => 'App',
-//                'attr' => array(
-//                    'class' => 'form-control input-inline datetimepicker',
-//                    'data-provide' => 'datepicker',
-//                    'data-format' => 'dd-mm-yyyy',
-//                ),
-//            ))
-//
-//        ;
-//
-//        $builder->get('expirationDate')
-//            ->addModelTransformer(new DateTimeTransformer());
     }
 
     public function configureOptions(OptionsResolver $resolver): void

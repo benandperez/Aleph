@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\EducationLevelRepository;
 use App\Util\TimeStampableEntity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EducationLevelRepository::class)]
@@ -24,6 +26,14 @@ class EducationLevel
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $title = null;
+
+    #[ORM\ManyToMany(targetEntity: Employees::class, mappedBy: 'educationLevel')]
+    private Collection $employees;
+
+    public function __construct()
+    {
+        $this->employees = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -62,6 +72,33 @@ class EducationLevel
     public function setTitle(?string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Employees>
+     */
+    public function getEmployees(): Collection
+    {
+        return $this->employees;
+    }
+
+    public function addEmployee(Employees $employee): self
+    {
+        if (!$this->employees->contains($employee)) {
+            $this->employees->add($employee);
+            $employee->addEducationLevel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmployee(Employees $employee): self
+    {
+        if ($this->employees->removeElement($employee)) {
+            $employee->removeEducationLevel($this);
+        }
 
         return $this;
     }

@@ -5,32 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecdbe0f6-f04a-4b5e-ac14-c52c539768d0" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/Util/DateTimeTransformer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/formTheme.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aleph.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aleph.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/jquery.collection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EmployeesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EmployeesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/CompanyPosition.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CompanyPosition.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Prueba.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Prueba.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EmployeesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EmployeesType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PersonalReferencesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PersonalReferencesType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RelationshipType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RelationshipType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/employees/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/employees/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/employees/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/personal_references/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/personal_references/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/prueba/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/prueba/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/relationship/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/relationship/_form.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +17,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -167,7 +147,9 @@
       <workItem from="1664570645175" duration="11050000" />
       <workItem from="1664590854777" duration="9581000" />
       <workItem from="1664808325132" duration="24458000" />
-      <workItem from="1664845946144" duration="15672000" />
+      <workItem from="1664845946144" duration="18764000" />
+      <workItem from="1664904711236" duration="597000" />
+      <workItem from="1664930914193" duration="4406000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1664586862261</created>
