@@ -28,7 +28,8 @@
                         <div class="profile-view">
                             <div class="profile-img-wrap">
                                 <div class="profile-img">
-                                    <a href="#"><img alt="" src="{{ asset('assets/img/profiles/avatar-02.jpg') }}"></a>
+                                    {{ form_row(form.imageProfile, {'attr': {'style': 'display: none;'}}) }}
+                                    <a href="#" id="imageProfile"><img alt="" src="{% if employee.imageProfile %}{{ employee.imageProfile}}{% else%}{{ asset('assets/img/profiles/avatar-02.jpg') }} {% endif %}" id="imgPreview"></a>
                                 </div>
                             </div>
                             {#profile-basic#}

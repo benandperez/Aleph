@@ -7,11 +7,13 @@ use App\Entity\PersonalReferences;
 use App\Form\EmployeesType;
 use App\Repository\EmployeesRepository;
 use App\Repository\PersonalReferencesRepository;
+use App\Service\BlobService;
 use PhpParser\Node\Expr\New_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/employees')]
 class EmployeesController extends AbstractController
@@ -25,17 +27,23 @@ class EmployeesController extends AbstractController
     }
 
     #[Route('/new', name: 'app_employees_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository): Response
+    public function new(Request $request, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository, SluggerInterface $slugger, BlobService $blobService): Response
     {
         $employee = new Employees();
         $form = $this->createForm(EmployeesType::class, $employee);
         $form->handleRequest($request);
 
-//        dd($employee, $request, $form);
+//        dd($employee, $request, $form, $form->get('imageProfile')->getData());
 
         if ($form->isSubmitted()) {
             $orderDate = "Y/m/d";
 
+            $imageProfile = $form->get('imageProfile')->getData();
+
+            if ($imageProfile) {
+                $this->uploadFile($imageProfile, $employee, $slugger, $blobService);
+
+            }
 
             $this->setDate($request, $employee,$orderDate, $personalReferencesRepository);
             $employeesRepository->add($employee, true);
@@ -58,7 +66,7 @@ class EmployeesController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_employees_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Employees $employee, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository): Response
+    public function edit(Request $request, Employees $employee, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository, SluggerInterface $slugger, BlobService $blobService): Response
     {
         $form = $this->createForm(EmployeesType::class, $employee);
         $form->handleRequest($request);
@@ -66,6 +74,12 @@ class EmployeesController extends AbstractController
 
         if ($form->isSubmitted()) {
             $orderDate = "Y/m/d";
+            $imageProfile = $form->get('imageProfile')->getData();
+
+            if ($imageProfile) {
+                $this->uploadFile($imageProfile, $employee, $slugger, $blobService);
+
+            }
 
             $this->setDate($request, $employee, $orderDate, $personalReferencesRepository);
             $employeesRepository->add($employee, true);
@@ -73,7 +87,6 @@ class EmployeesController extends AbstractController
             return $this->redirectToRoute('app_employees_index', [], Response::HTTP_SEE_OTHER);
         }
         $this->setDate($request, $employee, $orderDate, $personalReferencesRepository);
-//        dd($employee, $form);
 
         return $this->renderForm('employees/edit.html.twig', [
             'employee' => $employee,
@@ -124,6 +137,25 @@ class EmployeesController extends AbstractController
                 }
             }
         }
+
+    }
+
+    public function uploadFile($imageProfile, $employee, $slugger, $blobService)
+    {
+        $newFilename = "https://".$_ENV['ACCOUNTNAME'].".blob.core.windows.net/".$_ENV['BLOBIMAGEPROFILE']."/".$imageProfile->getClientOriginalName();
+
+        try {
+
+            if (empty($imageProfile)) {
+                return new Response("No file specified", Response::HTTP_UNPROCESSABLE_ENTITY, ['content-type' => 'text/plain']);
+            }
+            $blobService->upload($imageProfile);
+
+        } catch (FileException $e) {
+            print_r($e);
+        }
+
+        $employee->setImageProfile($newFilename);
 
     }
 }
