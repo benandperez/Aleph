@@ -142,7 +142,7 @@ class FamilyNucleusType extends AbstractType
                 ],
                 'expanded' => true,
                 'attr' => [
-                    'class' => 'form-check-input'
+                    'class' => 'form-check'
                 ],
             ])
             ->add('workPlace', null, [
@@ -190,7 +190,7 @@ class FamilyNucleusType extends AbstractType
                 ],
                 'expanded' => true,
                 'attr' => [
-                    'class' => 'form-check-input'
+                    'class' => 'form-check'
                 ],
             ])
             ->add('documentType', EntityType::class, [

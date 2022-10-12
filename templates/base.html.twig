@@ -115,30 +115,78 @@
                     allow_up:false,
                     min: 1,
                     prefix: 'personal-reference',
+                    after_add: function() {
+                        $('.reference-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                        $('.datetimepicker').datetimepicker({
+                            format: 'DD/MM/YYYY',
+                            icons: {
+                                up: "fa fa-angle-up",
+                                down: "fa fa-angle-down",
+                                next: 'fa fa-angle-right',
+                                previous: 'fa fa-angle-left'
+                            }
+                        });
+                    }
                 });
                 $('.familyNucleus-collection').collection({
                     allow_down: false,
                     allow_up:false,
                     min: 1,
                     prefix: 'family-nucleus',
+                    after_add: function() {
+                        $('.familyNucleus-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                        $('.datetimepicker').datetimepicker({
+                            format: 'DD/MM/YYYY',
+                            icons: {
+                                up: "fa fa-angle-up",
+                                down: "fa fa-angle-down",
+                                next: 'fa fa-angle-right',
+                                previous: 'fa fa-angle-left'
+                            }
+                        });
+                    }
                 });
                 $('.financialProfile-collection').collection({
                     allow_down: false,
                     allow_up:false,
                     min: 1,
                     prefix: 'financial-profile',
+                    after_add: function() {
+                        $('.financialProfile-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
                 });
                 $('.studiesCurrently-collection').collection({
                     allow_down: false,
                     allow_up:false,
                     min: 1,
                     prefix: 'studies-currently',
+                    after_add: function() {
+                        $('.studiesCurrently-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
                 });
                 $('.educationLevel-collection').collection({
                     allow_down: false,
                     allow_up:false,
                     min: 1,
                     prefix: 'education-level',
+                    after_add: function() {
+                        $('.educationLevel-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
                 });
                 $(document).ready(function(){
 
@@ -148,10 +196,13 @@
                         // });
                         const str = $(this).attr("value");
 
-                        const [year ,month , day] = str.split('-');
+                        const [year, month, day] = str && str.split('-');
                         $(this).val(day+"/"+month+"/"+year)
 
                     });
+
+
+                    
 
                 });
         </script>
