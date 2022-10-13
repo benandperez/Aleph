@@ -1,6 +1,7 @@
 <?php
 namespace App\Service;
 use MicrosoftAzure\Storage\Blob\BlobRestProxy;
+use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
 use MicrosoftAzure\Storage\Common\Exceptions\ServiceException;
 use Psr\Log\LoggerInterface;
 class BlobService
@@ -42,12 +43,28 @@ class BlobService
             throw $exception;
         }
     }
-    public function delete($blobName, $container = 'images')
+    public function delete($blobName, $blobFolderName, $container = 'aleph-document')
     {
         try {
+            $blobName = $blobFolderName."/".$blobName;
             $this->blobClient->deleteBlob($container, $blobName);
         } catch (ServiceException $exception) {
             $this->logger->error('failed to delete the file: ' . $exception->getCode() . ':' . $exception->getMessage());
+            throw $exception;
+        }
+    }
+
+    public function listBlobsEmployee($container = 'aleph-perfil', $folderName)
+    {
+        try {
+            $blobListOptions = new ListBlobsOptions();
+            $blobListOptions->setPrefix($folderName);
+
+            $blobList = $this->blobClient->listBlobs($container, $blobListOptions);
+
+            return $blobList->getBlobs();
+        } catch (ServiceException $exception) {
+            $this->logger->error('failed to get all blobs: ' . $exception->getCode() . ':' . $exception->getMessage());
             throw $exception;
         }
     }

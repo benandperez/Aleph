@@ -10,6 +10,7 @@ use App\Repository\PersonalReferencesRepository;
 use App\Service\BlobService;
 use PhpParser\Node\Expr\New_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,21 +28,22 @@ class EmployeesController extends AbstractController
     }
 
     #[Route('/new', name: 'app_employees_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository, SluggerInterface $slugger, BlobService $blobService): Response
+    public function new(Request $request, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository, BlobService $blobService): Response
     {
         $employee = new Employees();
         $form = $this->createForm(EmployeesType::class, $employee);
         $form->handleRequest($request);
 
-//        dd($employee, $request, $form, $form->get('imageProfile')->getData());
+        //dd($employee, $request, $form, $form->get('documentAll')->getData());
 
         if ($form->isSubmitted()) {
             $orderDate = "Y/m/d";
 
             $imageProfile = $form->get('imageProfile')->getData();
+            $documentEmployee = $form->get('documentAll')->getData();
 
-            if ($imageProfile) {
-                $this->uploadFile($imageProfile, $employee, $slugger, $blobService);
+            if ($imageProfile || $documentEmployee) {
+                $this->uploadFile($imageProfile, $documentEmployee, $employee, $blobService);
 
             }
 
@@ -66,7 +68,7 @@ class EmployeesController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_employees_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Employees $employee, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository, SluggerInterface $slugger, BlobService $blobService): Response
+    public function edit(Request $request, Employees $employee, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository, BlobService $blobService): Response
     {
         $form = $this->createForm(EmployeesType::class, $employee);
         $form->handleRequest($request);
@@ -75,9 +77,10 @@ class EmployeesController extends AbstractController
         if ($form->isSubmitted()) {
             $orderDate = "Y/m/d";
             $imageProfile = $form->get('imageProfile')->getData();
+            $documentEmployee = $form->get('documentAll')->getData();
 
-            if ($imageProfile) {
-                $this->uploadFile($imageProfile, $employee, $slugger, $blobService);
+            if ($imageProfile || $documentEmployee) {
+                $this->uploadFile($imageProfile, $documentEmployee, $employee, $blobService, $update = true);
 
             }
 
@@ -87,9 +90,9 @@ class EmployeesController extends AbstractController
             return $this->redirectToRoute('app_employees_index', [], Response::HTTP_SEE_OTHER);
         }
         $this->setDate($request, $employee, $orderDate, $personalReferencesRepository);
-
         return $this->renderForm('employees/edit.html.twig', [
             'employee' => $employee,
+            'blobsDocument' => $blobService->listBlobsEmployee($_ENV['BLOBDOCUMENT'], $employee->getEmployeeFolderName()),
             'form' => $form,
         ]);
     }
@@ -140,22 +143,55 @@ class EmployeesController extends AbstractController
 
     }
 
-    public function uploadFile($imageProfile, $employee, $slugger, $blobService)
+    public function uploadFile($imageProfile, $documentsEmployee, $employee, $blobService, $update = false)
     {
-        $newFilename = "https://".$_ENV['ACCOUNTNAME'].".blob.core.windows.net/".$_ENV['BLOBIMAGEPROFILE']."/".$imageProfile->getClientOriginalName();
 
-        try {
-
-            if (empty($imageProfile)) {
-                return new Response("No file specified", Response::HTTP_UNPROCESSABLE_ENTITY, ['content-type' => 'text/plain']);
+        $folderNameDocumentEmployee = $employee->getFirstName() . "-" . uniqid();
+        if ($imageProfile) {
+            if ($update) {
+                $folderNameDocumentEmployee = $employee->getEmployeeFolderName() ;
             }
-            $blobService->upload($imageProfile);
+            $container = $_ENV['BLOBIMAGEPROFILE']."/".$folderNameDocumentEmployee;
 
-        } catch (FileException $e) {
-            print_r($e);
+
+            $newFilenameProfile = "https://" . $_ENV['ACCOUNTNAME'] . ".blob.core.windows.net/" . $_ENV['BLOBIMAGEPROFILE'] . "/" .$folderNameDocumentEmployee ."/". $imageProfile->getClientOriginalName();
+            try {
+
+                if (empty($imageProfile)) {
+                    return new Response("No file specified", Response::HTTP_UNPROCESSABLE_ENTITY, ['content-type' => 'text/plain']);
+                }
+                $blobService->upload($imageProfile, $container);
+
+            } catch (FileException $e) {
+                print_r($e);
+            }
+            $employee->setImageProfile($newFilenameProfile);
+        }
+        if ($documentsEmployee){
+            try {
+                if ($update) {
+                    $folderNameDocumentEmployee = $employee->getEmployeeFolderName() ;
+                }
+
+                $container = $folderNameDocumentEmployee;
+
+
+                foreach ($documentsEmployee as $documentEmployee) {
+                    $blobService->upload($documentEmployee, $_ENV['BLOBDOCUMENT']."/".$container);
+                }
+                $employee->setEmployeeFolderName($container);
+            } catch (FileException $ex) {
+                print_r($ex);
+            }
+
         }
 
-        $employee->setImageProfile($newFilename);
+    }
 
+    #[Route('/delete/{blobName}/{blobFolderName}/{employeeId}', name: 'app_blobs_delete_employee')]
+    public function deleteBlob($blobName, $blobFolderName, $employeeId, BlobService $storage)
+    {
+        $storage->delete($blobName, $blobFolderName);
+        return $this->redirectToRoute('app_employees_edit', ['id' => $employeeId]);
     }
 }

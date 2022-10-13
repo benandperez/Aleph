@@ -647,6 +647,37 @@
             {% if 'ROLE_ADMIN' in app.user.roles %}
                 <!-- /Document Info Tab -->
                 <div id="emp_document" class="pro-overview tab-pane fade show active">
+                    <div class="profile-img">
+                        <div class="form-group">
+                            {{ form_widget (form.documentAll, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        {% if employee.id is not empty %}
+                            <div class="chat-body">
+                                <div class="chat-bubble">
+                                    <div class="chat-content">
+                                        <span class="file-attached">Attached {{ blobsDocument|length }} files <i class="fa fa-paperclip"></i></span><br>
+
+                                            {% for blob in blobsDocument %}
+                                                <br><span class="chat-time">Date Upload:  {{ blob.properties.creationTime|date('d-m-Y') }}</span>
+                                                <ul class="attach-list">
+                                                    {% set replace_value_var= employee.employeeFolderName~"/" %}
+                                                    {% set blobName=  blob.name|replace({ (replace_value_var): '' })  %}
+                                                    <li class="pdf-file">
+                                                        <i class="fa fa-file"></i>
+                                                        <a href="{{ blob.url }}">
+                                                            {{ blobName}}
+                                                        </a>
+
+                                                        <a href="{{ path('app_blobs_delete_employee', {'blobName': blobName, 'blobFolderName': employee.employeeFolderName, 'employeeId': employee.id}) }}"> <i class="fa fa-trash"></i></a>
+
+                                                    </li>
+                                                </ul>
+                                            {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                    </div>
                 </div>
                 <!-- /Document Info Tab -->
             {% endif %}

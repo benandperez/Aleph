@@ -5,29 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecdbe0f6-f04a-4b5e-ac14-c52c539768d0" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20221008030825.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20221008034612.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/BlobsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/BlobService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/blobs/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aleph.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aleph.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EmployeesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EmployeesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/BloodType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BloodType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Corregimiento.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Corregimiento.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/District.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/District.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Employees.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/MaritalStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MaritalStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Province.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Province.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/EmployeesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EmployeesType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/BlobService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/BlobService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/employees/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/employees/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/employees/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +168,12 @@
       <workItem from="1664904711236" duration="597000" />
       <workItem from="1664930914193" duration="4581000" />
       <workItem from="1665018074377" duration="1183000" />
-      <workItem from="1665167863015" duration="19053000" />
+      <workItem from="1665167863015" duration="19377000" />
+      <workItem from="1665214257427" duration="1510000" />
+      <workItem from="1665451519966" duration="7699000" />
+      <workItem from="1665583669439" duration="1739000" />
+      <workItem from="1665598670227" duration="705000" />
+      <workItem from="1665602439711" duration="11479000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1664586862261</created>
