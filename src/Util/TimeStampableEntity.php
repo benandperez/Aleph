@@ -3,85 +3,51 @@
 
 namespace App\Util;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 trait TimeStampableEntity
 {
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updated_at", type="datetime")
-     */
-    private $updatedAt;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $createdAt = null;
 
-    /**
-     * Gets triggered only on insert
-     *
-     * @ORM\PrePersist
-     */
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $updatedAt = null;
+
+    #[ORM\PrePersist]
     public function onPrePersist()
     {
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
-    /**
-     * Gets triggered every time on update
-     *
-     * @ORM\PreUpdate
-     */
+    #[ORM\PreUpdate]
     public function onPreUpdate()
     {
-        $this->updatedAt = new \DateTime();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(?\DateTimeInterface $createdAt)
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt)
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }

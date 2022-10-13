@@ -2,17 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\PropertyStatusRepository;
-use App\Util\TimeStampableEntity;
+use App\Repository\CountryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PropertyStatusRepository::class)]
-class PropertyStatus
+#[ORM\Entity(repositoryClass: CountryRepository::class)]
+class Country
 {
-    use TimeStampableEntity;
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,7 +21,7 @@ class PropertyStatus
     #[ORM\Column]
     private ?bool $status = null;
 
-    #[ORM\OneToMany(mappedBy: 'propertyStatus', targetEntity: Property::class)]
+    #[ORM\OneToMany(mappedBy: 'country', targetEntity: Property::class)]
     private Collection $properties;
 
     public function __construct()
@@ -73,7 +70,7 @@ class PropertyStatus
     {
         if (!$this->properties->contains($property)) {
             $this->properties->add($property);
-            $property->setPropertyStatus($this);
+            $property->setCountry($this);
         }
 
         return $this;
@@ -83,16 +80,11 @@ class PropertyStatus
     {
         if ($this->properties->removeElement($property)) {
             // set the owning side to null (unless already changed)
-            if ($property->getPropertyStatus() === $this) {
-                $property->setPropertyStatus(null);
+            if ($property->getCountry() === $this) {
+                $property->setCountry(null);
             }
         }
 
         return $this;
-    }
-
-    public function __toString(): string
-    {
-        return (string) $this->getName();
     }
 }

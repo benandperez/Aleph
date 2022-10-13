@@ -16,6 +16,7 @@ use App\Entity\LicenseType;
 use App\Entity\MaritalStatus;
 use App\Entity\PlaceWork;
 use App\Entity\Province;
+use App\Entity\WorkingInformation;
 use App\Util\DateTimeTransformer;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -465,6 +466,21 @@ class EmployeesType extends AbstractType
                     'class' => 'form-control'
                 ],
             ])
+            ->add('financialProfile', CollectionType::class, [
+                'entry_type' => FinancialProfileType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'financialProfile-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
 
             //Información Laboral ALEPH GROUP
             ->add('companyPosition', null, [
@@ -551,8 +567,86 @@ class EmployeesType extends AbstractType
                 ],
             ])
 
+            //Información Académica
+            ->add('studiesCurrently', CollectionType::class, [
+                'entry_type' => StudiesCurrentlyType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'studiesCurrently-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
+            ->add('educationLevel', CollectionType::class, [
+                'entry_type' => EducationLevelType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'educationLevel-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
+            ->add('language', CollectionType::class, [
+                'entry_type' => LanguageType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'language-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
 
+            //INFORMACIÓN PATRIMONIAL
+            ->add('property', CollectionType::class, [
+                'entry_type' => PropertyType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'property-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
+            ->add('vehicleFeatures', CollectionType::class, [
+                'entry_type' => VehicleFeaturesType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'vehicleFeatures-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
+                ],
+            ])
 
+            //Referencias personales
             ->add('personalReferences', CollectionType::class, [
                 'entry_type' => PersonalReferencesType::class,
                 'by_reference' => false,
@@ -569,7 +663,7 @@ class EmployeesType extends AbstractType
                 ],
             ])
 
-
+            //Información de Nucleo Familiar
             ->add('familyNucleus', CollectionType::class, [
                 'entry_type' => FamilyNucleusType::class,
                 'by_reference' => false,
@@ -586,40 +680,11 @@ class EmployeesType extends AbstractType
                 ],
             ])
 
-            ->add('financialProfile', CollectionType::class, [
-                'entry_type' => FinancialProfileType::class,
-                'by_reference' => false,
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'required'     => false,
-                'delete_empty' => true,
-                'attr' => array(
-                    'class' => 'financialProfile-collection',
-                ),
-                'entry_options' => [
-                    'label' => false,
-                ],
-            ])
 
-            ->add('studiesCurrently', CollectionType::class, [
-                'entry_type' => StudiesCurrentlyType::class,
-                'by_reference' => false,
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'prototype'    => true,
-                'required'     => false,
-                'delete_empty' => true,
-                'attr' => array(
-                    'class' => 'studiesCurrently-collection',
-                ),
-                'entry_options' => [
-                    'label' => false,
-                ],
-            ])
 
-            ->add('educationLevel', CollectionType::class, [
-                'entry_type' => EducationLevelType::class,
+            //Experience
+            ->add('workingInformation', CollectionType::class, [
+                'entry_type' => WorkingInformationType::class,
                 'by_reference' => false,
                 'allow_add'    => true,
                 'allow_delete' => true,
@@ -627,7 +692,7 @@ class EmployeesType extends AbstractType
                 'required'     => false,
                 'delete_empty' => true,
                 'attr' => array(
-                    'class' => 'educationLevel-collection',
+                    'class' => 'workingInformation-collection',
                 ),
                 'entry_options' => [
                     'label' => false,
@@ -637,6 +702,30 @@ class EmployeesType extends AbstractType
             //Document
 
             ->add('documentAll', FileType::class, [
+                'label' => false,
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false,
+                'multiple' => true,
+                'attr' => array(
+                    'class' => 'custom-file-label',
+                ),
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ],
+            ])
+            ->add('documentBannsAll', FileType::class, [
                 'label' => false,
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,

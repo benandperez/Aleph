@@ -177,6 +177,21 @@ class Employees
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $employeeFolderName = null;
 
+    #[ORM\ManyToMany(targetEntity: Language::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $language;
+
+    #[ORM\ManyToMany(targetEntity: WorkingInformation::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $workingInformation;
+
+    #[ORM\ManyToMany(targetEntity: VehicleFeatures::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $vehicleFeatures;
+
+    #[ORM\ManyToMany(targetEntity: Property::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $property;
+
+    #[ORM\Column]
+    private ?bool $status = null;
+
     public function __construct()
     {
         $this->placeWork = new ArrayCollection();
@@ -185,6 +200,10 @@ class Employees
         $this->financialProfile = new ArrayCollection();
         $this->studiesCurrently = new ArrayCollection();
         $this->educationLevel = new ArrayCollection();
+        $this->language = new ArrayCollection();
+        $this->workingInformation = new ArrayCollection();
+        $this->vehicleFeatures = new ArrayCollection();
+        $this->property = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -891,6 +910,114 @@ class Employees
     public function setEmployeeFolderName(?string $employeeFolderName): self
     {
         $this->employeeFolderName = $employeeFolderName;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Language>
+     */
+    public function getLanguage(): Collection
+    {
+        return $this->language;
+    }
+
+    public function addLanguage(Language $language): self
+    {
+        if (!$this->language->contains($language)) {
+            $this->language->add($language);
+        }
+
+        return $this;
+    }
+
+    public function removeLanguage(Language $language): self
+    {
+        $this->language->removeElement($language);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, WorkingInformation>
+     */
+    public function getWorkingInformation(): Collection
+    {
+        return $this->workingInformation;
+    }
+
+    public function addWorkingInformation(WorkingInformation $workingInformation): self
+    {
+        if (!$this->workingInformation->contains($workingInformation)) {
+            $this->workingInformation->add($workingInformation);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkingInformation(WorkingInformation $workingInformation): self
+    {
+        $this->workingInformation->removeElement($workingInformation);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, VehicleFeatures>
+     */
+    public function getVehicleFeatures(): Collection
+    {
+        return $this->vehicleFeatures;
+    }
+
+    public function addVehicleFeature(VehicleFeatures $vehicleFeature): self
+    {
+        if (!$this->vehicleFeatures->contains($vehicleFeature)) {
+            $this->vehicleFeatures->add($vehicleFeature);
+        }
+
+        return $this;
+    }
+
+    public function removeVehicleFeature(VehicleFeatures $vehicleFeature): self
+    {
+        $this->vehicleFeatures->removeElement($vehicleFeature);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Property>
+     */
+    public function getProperty(): Collection
+    {
+        return $this->property;
+    }
+
+    public function addProperty(Property $property): self
+    {
+        if (!$this->property->contains($property)) {
+            $this->property->add($property);
+        }
+
+        return $this;
+    }
+
+    public function removeProperty(Property $property): self
+    {
+        $this->property->removeElement($property);
+
+        return $this;
+    }
+
+    public function isStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

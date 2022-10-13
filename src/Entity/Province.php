@@ -30,10 +30,14 @@ class Province
     #[ORM\OneToMany(mappedBy: 'province', targetEntity: District::class)]
     private Collection $districts;
 
+    #[ORM\OneToMany(mappedBy: 'province', targetEntity: Property::class)]
+    private Collection $properties;
+
     public function __construct()
     {
         $this->employees = new ArrayCollection();
         $this->districts = new ArrayCollection();
+        $this->properties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -127,5 +131,35 @@ class Province
     public function __toString(): string
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * @return Collection<int, Property>
+     */
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    public function addProperty(Property $property): self
+    {
+        if (!$this->properties->contains($property)) {
+            $this->properties->add($property);
+            $property->setProvince($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProperty(Property $property): self
+    {
+        if ($this->properties->removeElement($property)) {
+            // set the owning side to null (unless already changed)
+            if ($property->getProvince() === $this) {
+                $property->setProvince(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -25,7 +25,7 @@
                         <div class="profile-view">
                             <div class="profile-img-wrap">
                                 <div class="profile-img">
-                                    {{ form_row(form.imageProfile, {'attr': {'style': 'display: none;'}}) }}
+                                    {{ form_widget(form.imageProfile, {'attr': {'style': 'display: none;'}}) }}
                                     <a href="#" id="imageProfile"><img alt="" src="{% if employee.imageProfile %}{{ employee.imageProfile}}{% else%}{{ asset('assets/img/profiles/avatar-02.jpg') }} {% endif %}" id="imgPreview"></a>
                                 </div>
                             </div>
@@ -130,6 +130,7 @@
                         <li class="nav-item"><a href="#emp_profile" data-bs-toggle="tab" class="nav-link active">Profile</a></li>
                         {% if 'ROLE_ADMIN' in app.user.roles %}
                             <li class="nav-item"><a href="#emp_document" data-bs-toggle="tab" class="nav-link">Documento</a></li>
+                            <li class="nav-item"><a href="#emp_document_banns" data-bs-toggle="tab" class="nav-link">Documentos Amonestaciones</a></li>
                         {% endif %}
                         {#                    <li class="nav-item"><a href="#bank_statutory" data-bs-toggle="tab" class="nav-link">Bank & Statutory <small class="text-danger">(Admin Only)</small></a></li>#}
                     </ul>
@@ -325,56 +326,22 @@
                                 </h3>
                                 {{ form_row(form.studiesCurrently) }}
                                 {{ form_row(form.educationLevel) }}
+                                {{ form_row(form.language) }}
                             </div>
                         </div>
                     </div>
-                    {#Experience#}
+                    {#INFORMACIÓN PATRIMONIAL#}
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
-                                <h3 class="card-title">Experience
+                                <h3 class="card-title">INFORMACIÓN PATRIMONIALINFORMACIÓN PATRIMONIAL
                                     {% if employee.id is not empty %}
                                         <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon" data-bs-target="#experience_info"><i class="fa fa-pencil"></i>
                                         </a>
                                     {% endif %}
                                 </h3>
-                                <div class="experience-box">
-                                    <ul class="experience-list">
-                                        <li>
-                                            <div class="experience-user">
-                                                <div class="before-circle"></div>
-                                            </div>
-                                            <div class="experience-content">
-                                                <div class="timeline-content">
-                                                    <a href="#/" class="name">Web Designer at Zen Corporation</a>
-                                                    <span class="time">Jan 2013 - Present (5 years 2 months)</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="experience-user">
-                                                <div class="before-circle"></div>
-                                            </div>
-                                            <div class="experience-content">
-                                                <div class="timeline-content">
-                                                    <a href="#/" class="name">Web Designer at Ron-tech</a>
-                                                    <span class="time">Jan 2013 - Present (5 years 2 months)</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="experience-user">
-                                                <div class="before-circle"></div>
-                                            </div>
-                                            <div class="experience-content">
-                                                <div class="timeline-content">
-                                                    <a href="#/" class="name">Web Designer at Dalt Technology</a>
-                                                    <span class="time">Jan 2013 - Present (5 years 2 months)</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                {{ form_row(form.property) }}
+                                {{ form_row(form.vehicleFeatures) }}
                             </div>
                         </div>
                     </div>
@@ -394,7 +361,7 @@
                             </div>
                         </div>
                     </div>
-                    {#Family Information#}
+                    {#Información de Nucleo Familiar#}
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
@@ -410,8 +377,25 @@
                     </div>
 
                 </div>
+                <div class="row">
+                    {#Información Laboral#}
+                    <div class="col-md-6 d-flex">
+                        <div class="card profile-box flex-fill">
+                            <div class="card-body">
+                                <h3 class="card-title">Información Laboral
+                                    {% if employee.id is not empty %}
+                                        <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon" data-bs-target="#family_info_modal"><i class="fa fa-pencil"></i>
+                                        </a>
+                                    {% endif %}
+                                </h3>
+                                {{ form_row(form.workingInformation) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /Profile Info Tab -->
+
             {% if 'ROLE_ADMIN' in app.user.roles %}
                 <!-- /Document Info Tab -->
                 <div id="emp_document" class="pro-overview tab-pane fade ">
@@ -448,6 +432,42 @@
                     </div>
                 </div>
                 <!-- /Document Info Tab -->
+
+                <!-- /Document banns Info Tab -->
+                <div id="emp_document_banns" class="pro-overview tab-pane fade ">
+                    <div class="profile-img">
+                        <div class="form-group">
+                            {{ form_widget (form.documentBannsAll, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        {% if employee.id is not empty %}
+                            <div class="chat-body">
+                                <div class="chat-bubble">
+                                    <div class="chat-content">
+                                        <span class="file-attached">Attached {{ blobsDocumentBanns|length }} files <i class="fa fa-paperclip"></i></span><br>
+
+                                        {% for blobBanns in blobsDocumentBanns %}
+                                            <br><span class="chat-time">Date Upload:  {{ blobBanns.properties.creationTime|date('d-m-Y') }}</span>
+                                            <ul class="attach-list">
+                                                {% set replace_value_var= banns~"-"~employee.employeeFolderName~"/" %}
+                                                {% set blobNameBanns=  blobBanns.name|replace({ (replace_value_var): '' })  %}
+                                                <li class="pdf-file">
+                                                    <i class="fa fa-file"></i>
+                                                    <a href="{{ blobBanns.url }}">
+                                                        {{ blobNameBanns}}
+                                                    </a>
+
+                                                    <a href="{{ path('app_blobs_delete_employee', {'blobName': blobNameBanns, 'blobFolderName': employee.employeeFolderName, 'employeeId': employee.id}) }}"> <i class="fa fa-trash"></i></a>
+
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- /Document banns Info Tab -->
             {% endif %}
 
         </div>

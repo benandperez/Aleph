@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\LanguageRepository;
 use App\Util\TimeStampableEntity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LanguageRepository::class)]
@@ -30,6 +32,14 @@ class Language
 
     #[ORM\ManyToOne(inversedBy: 'languages')]
     private ?LanguageLevel $languageLevelWritten = null;
+
+    #[ORM\ManyToMany(targetEntity: Employees::class, mappedBy: 'language')]
+    private Collection $employees;
+
+    public function __construct()
+    {
+        $this->employees = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -94,5 +104,36 @@ class Language
         $this->languageLevelWritten = $languageLevelWritten;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Employees>
+     */
+    public function getEmployees(): Collection
+    {
+        return $this->employees;
+    }
+
+    public function addEmployee(Employees $employee): self
+    {
+        if (!$this->employees->contains($employee)) {
+            $this->employees->add($employee);
+            $employee->addLanguage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmployee(Employees $employee): self
+    {
+        if ($this->employees->removeElement($employee)) {
+            $employee->removeLanguage($this);
+        }
+
+        return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->language;
     }
 }

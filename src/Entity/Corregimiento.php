@@ -30,9 +30,13 @@ class Corregimiento
     #[ORM\ManyToOne(inversedBy: 'corregimientos')]
     private ?District $district = null;
 
+    #[ORM\OneToMany(mappedBy: 'corregimiento', targetEntity: Property::class)]
+    private Collection $properties;
+
     public function __construct()
     {
         $this->employees = new ArrayCollection();
+        $this->properties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -108,5 +112,35 @@ class Corregimiento
     public function __toString(): string
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * @return Collection<int, Property>
+     */
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    public function addProperty(Property $property): self
+    {
+        if (!$this->properties->contains($property)) {
+            $this->properties->add($property);
+            $property->setCorregimiento($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProperty(Property $property): self
+    {
+        if ($this->properties->removeElement($property)) {
+            // set the owning side to null (unless already changed)
+            if ($property->getCorregimiento() === $this) {
+                $property->setCorregimiento(null);
+            }
+        }
+
+        return $this;
     }
 }
