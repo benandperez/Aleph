@@ -24,7 +24,7 @@
                     <div class="profile-view">
                         <div class="profile-img-wrap">
                             <div class="profile-img">
-                                <a href="#"><img alt="" src="{{ asset('assets/img/profiles/avatar-02.jpg') }}"></a>
+                                <a href="#"><img alt="" src="{% if employee.imageProfile %}{{ employee.imageProfile}}{% else%}{{ asset('assets/img/profiles/avatar-02.jpg') }}{% endif %}"></a>
                             </div>
                         </div>
                         <div class="profile-basic">
@@ -33,29 +33,51 @@
                                     <div class="profile-info-left">
                                         <h3 class="user-name m-t-0 mb-0">{{ employee.getFullName }}</h3>
                                         <h6 class="text-muted">{{ employee.nationality }}</h6>
-                                        <div class="staff-id">Documento : {{ employee.document }}</div>
-                                        <div class="small doj text-muted">Fecha de nacimiento : {{ employee.birthDay ? employee.birthDay|date('Y-m-d') : '' }} </div>
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-6">
+                                                <div class="staff-id">Tipo de Documento : {{ employee.documentType }}</div>
+
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="staff-id">Documento : {{ employee.document }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-6">
+                                                <div class="small doj text-muted">Fecha de expiración : {{ employee.expirationDate ? employee.expirationDate|date('d-m-Y') : '' }} </div>
+
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="small doj text-muted">Fecha de nacimiento : {{ employee.birthDay ? employee.birthDay|date('d-m-Y') : '' }} </div>
+                                            </div>
+                                        </div>
+
+
                                     </div>
                                 </div>
                                 <div class="col-md-7">
                                     <ul class="personal-info">
                                         <li>
-                                            <div class="title">Telefono:</div>
+                                            <div class="title">Teléfono Celular:</div>
                                             <div class="text"><a href="">{{ employee.cellPhone }}</a></div>
                                         </li>
                                         <li>
-                                            <div class="title">Email:</div>
+                                            <div class="title">E-mail Personal:</div>
                                             <div class="text"><a href="">{{ employee.personalEmail }}</a></div>
                                         </li>
                                         <li>
-                                            <div class="title">Direccion:</div>
-                                            <div class="text">{{ employee.fullResidenceAddress }}</div>
+                                            <div class="title">Género:</div>
+                                            <div class="text">{{ employee.gender }}</div>
+                                        </li>
+                                        <li>
+                                            <div class="title">Edad:</div>
+                                            <div class="text">{{ employee.age }}</div>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="pro-edit"><a data-bs-target="#profile_info" data-bs-toggle="modal" class="edit-icon" href="{{ path('app_employees_edit', {'id': employee.id}) }}"><i class="fa fa-pencil"></i></a></div>
+                        <div class="pro-edit"><a data-bs-target="#profile_info"  class="edit-icon" href="{{ path('app_employees_edit', {'id': employee.id}) }}"><i class="fa fa-pencil"></i></a></div>
                     </div>
                 </div>
             </div>
@@ -81,79 +103,117 @@
                 <div class="col-md-6 d-flex">
                     <div class="card profile-box flex-fill">
                         <div class="card-body">
-                            <h3 class="card-title">Personal Informations <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#personal_info_modal"><i class="fa fa-pencil"></i></a></h3>
-                            <ul class="personal-info">
-                                <li>
-                                    <div class="title">Passport No.</div>
-                                    <div class="text">9876543210</div>
-                                </li>
-                                <li>
-                                    <div class="title">Passport Exp Date.</div>
-                                    <div class="text">9876543210</div>
-                                </li>
-                                <li>
-                                    <div class="title">Tel</div>
-                                    <div class="text"><a href="">9876543210</a></div>
-                                </li>
-                                <li>
-                                    <div class="title">Nationality</div>
-                                    <div class="text">Indian</div>
-                                </li>
-                                <li>
-                                    <div class="title">Religion</div>
-                                    <div class="text">Christian</div>
-                                </li>
-                                <li>
-                                    <div class="title">Marital status</div>
-                                    <div class="text">Married</div>
-                                </li>
-                                <li>
-                                    <div class="title">Employment of spouse</div>
-                                    <div class="text">No</div>
-                                </li>
-                                <li>
-                                    <div class="title">No. of children</div>
-                                    <div class="text">2</div>
-                                </li>
-                            </ul>
+                            <h3 class="card-title">Personal Informations <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon"  data-bs-target="#personal_info_modal"><i class="fa fa-pencil"></i></a></h3>
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <div class="title">Lugar de nacimiento:</div>
+                                    <div class="text-muted">{{ employee.birthPlace ? employee.birthDay|date('d-m-Y') : '' }}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="title">Dirección de residencia:</div>
+                                    <div class="text-muted">{{ employee.fullResidenceAddress }}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="title">Estado civil:</div>
+                                    <div class="text-muted">{{ employee.maritalStatus }}</div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <div class="title">Provincia:</div>
+                                    <div class="text-muted">{{ employee.province}}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="title">Distrito:</div>
+                                    <div class="text-muted">{{ employee.district}}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="title">Corregimiento:</div>
+                                    <div class="text-muted">{{ employee.Corregimiento }}</div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <div class="title">Teléfono residencial:</div>
+                                    <div class="text-muted">{{ employee.residentialTelephone}}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="title">¿Práctica deporte?:</div>
+                                    <div class="text-muted">{% if employee.sportsPractice %}SI{% else %} NO {% endif %}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="title">¿Cuál?:</div>
+                                    <div class="text-muted">{{ employee.whatSports }}</div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-sm-12">
+                                    <div class="title">¿Su Hobbie preferido es?:</div>
+                                    <div class="text-muted">{{ employee.favoriteHobby }}</div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-sm-4">
+                                    <div class="title">Tipo de Licencia de Conducir:</div>
+                                    <div class="text-muted">{{ employee.licenseType}}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="title">Fecha de expiración:</div>
+                                    <div class="text-muted">{{ employee.expirationDateLicense ? employee.birthDay|date('d-m-Y') : '' }}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="title">¿Tiene auto propio?:</div>
+                                    <div class="text-muted">{% if employee.hasOwnCar %}SI{% else %} NO {% endif %}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 d-flex">
                     <div class="card profile-box flex-fill">
                         <div class="card-body">
-                            <h3 class="card-title">Emergency Contact <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#emergency_contact_modal"><i class="fa fa-pencil"></i></a></h3>
+                            <h3 class="card-title">Emergency Contact <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon"  data-bs-target="#emergency_contact_modal"><i class="fa fa-pencil"></i></a></h3>
                             <h5 class="section-title">Primary</h5>
-                            <ul class="personal-info">
-                                <li>
-                                    <div class="title">Name</div>
-                                    <div class="text">John Doe</div>
-                                </li>
-                                <li>
-                                    <div class="title">Relationship</div>
-                                    <div class="text">Father</div>
-                                </li>
-                                <li>
-                                    <div class="title">Phone </div>
-                                    <div class="text">9876543210, 9876543210</div>
-                                </li>
-                            </ul>
-                            <hr>
-                            <h5 class="section-title">Secondary</h5>
-                            <ul class="personal-info">
-                                <li>
-                                    <div class="title">Name</div>
-                                    <div class="text">Karen Wills</div>
-                                </li>
-                                <li>
-                                    <div class="title">Relationship</div>
-                                    <div class="text">Brother</div>
-                                </li>
-                                <li>
-                                    <div class="title">Phone </div>
-                                    <div class="text">9876543210, 9876543210</div>
-                                </li>
-                            </ul>
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <div class="title">En caso de emergencia llamar a :</div>
+                                    <div class="text-muted">{{ employee.inCaseOfEmergency}}</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="title">No. de teléfono del familiar :</div>
+                                    <div class="text-muted">{{ employee.familyPhoneNumber}}</div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <div class="title">¿Es alérgico a algún medicamento o comida?:</div>
+                                    <div class="text-muted">{% if employee.allergic %}SI{% else %} NO {% endif %}</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="title">Sí su respuesta es SÍ detallar :</div>
+                                    <div class="text-muted">{{ employee.allergicYes}}</div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <div class="title">¿Padece de alguna enfermedad crónica?:</div>
+                                    <div class="text-muted">{% if employee.chronicDisease %}SI{% else %} NO {% endif %}</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="title">Sí su respuesta es SÍ detallar:</div>
+                                    <div class="text-muted">{{ employee.chronicDiseaseYes}}</div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-sm-6">
+                                    <div class="title">Tipo de sangre:</div>
+                                    <div class="text-muted">{{ employee.bloodType}}</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="title">¿Usted es donante de sangre?:</div>
+                                    <div class="text-muted">{% if employee.bloodDonor %}SI{% else %} NO {% endif %}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -187,7 +247,7 @@
                 <div class="col-md-6 d-flex">
                     <div class="card profile-box flex-fill">
                         <div class="card-body">
-                            <h3 class="card-title">Family Informations <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#family_info_modal"><i class="fa fa-pencil"></i></a></h3>
+                            <h3 class="card-title">Family Informations <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon"  data-bs-target="#family_info_modal"><i class="fa fa-pencil"></i></a></h3>
                             <div class="table-responsive">
                                 <table class="table table-nowrap">
                                     <thead>
@@ -226,7 +286,7 @@
                 <div class="col-md-6 d-flex">
                     <div class="card profile-box flex-fill">
                         <div class="card-body">
-                            <h3 class="card-title">Education Informations <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#education_info"><i class="fa fa-pencil"></i></a></h3>
+                            <h3 class="card-title">Education Informations <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon"  data-bs-target="#education_info"><i class="fa fa-pencil"></i></a></h3>
                             <div class="experience-box">
                                 <ul class="experience-list">
                                     <li>
@@ -261,7 +321,7 @@
                 <div class="col-md-6 d-flex">
                     <div class="card profile-box flex-fill">
                         <div class="card-body">
-                            <h3 class="card-title">Experience <a href="#" class="edit-icon" data-bs-toggle="modal" data-bs-target="#experience_info"><i class="fa fa-pencil"></i></a></h3>
+                            <h3 class="card-title">Experience <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon"  data-bs-target="#experience_info"><i class="fa fa-pencil"></i></a></h3>
                             <div class="experience-box">
                                 <ul class="experience-list">
                                     <li>

@@ -171,6 +171,12 @@ class Employees
     #[ORM\ManyToMany(targetEntity: EducationLevel::class, inversedBy: 'employees', cascade: ['persist'])]
     private Collection $educationLevel;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageProfile = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $employeeFolderName = null;
+
     public function __construct()
     {
         $this->placeWork = new ArrayCollection();
@@ -861,6 +867,30 @@ class Employees
     public function removeEducationLevel(EducationLevel $educationLevel): self
     {
         $this->educationLevel->removeElement($educationLevel);
+
+        return $this;
+    }
+
+    public function getImageProfile(): ?string
+    {
+        return $this->imageProfile;
+    }
+
+    public function setImageProfile(?string $imageProfile): self
+    {
+        $this->imageProfile = $imageProfile;
+
+        return $this;
+    }
+
+    public function getEmployeeFolderName(): ?string
+    {
+        return $this->employeeFolderName;
+    }
+
+    public function setEmployeeFolderName(?string $employeeFolderName): self
+    {
+        $this->employeeFolderName = $employeeFolderName;
 
         return $this;
     }
