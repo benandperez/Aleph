@@ -26,7 +26,7 @@ class FinancialProfileType extends AbstractType
                 ],
                 'expanded' => true,
                 'attr' => [
-                    'class' => 'form-check-input'
+                    'class' => ''
                 ],
             ])
             ->add('name', null, [
@@ -56,7 +56,7 @@ class FinancialProfileType extends AbstractType
                 ],
                 'expanded' => true,
                 'attr' => [
-                    'class' => 'form-check-input'
+                    'class' => ''
                 ],
             ])
             ->add('accountType', EntityType::class, [

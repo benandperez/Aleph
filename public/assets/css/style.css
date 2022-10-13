@@ -2515,7 +2515,7 @@ input[type=file].form-control {
 
 .select2-container .select2-selection--single {
   border: 1px solid #dcdcdc;
-  height: 50px;
+  height: 44px;
 }
 .select2-container .select2-selection--single .select2-selection__rendered {
   padding-right: 30px;
@@ -6629,7 +6629,6 @@ button.close {
 }
 .profile-view .profile-basic {
   margin-left: 140px;
-  padding-right: 50px;
 }
 @media (max-width: 575px) {
   .profile-view .profile-basic {

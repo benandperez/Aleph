@@ -1,9 +1,6 @@
 
 {% block body %}
-    {%
-        form_theme form
-        'jquery.collection.html.twig'
-    %}
+    {% form_theme form 'form_theme/jquery.collection.html.twig' %}
     {% form_theme form.personalReferences 'formTheme.html.twig' %}
 
 {{ form_start(form) }}
@@ -35,113 +32,83 @@
                             {#profile-basic#}
                             <div class="profile-basic">
                                 <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="profile-info-left">
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <h3 class="user-name m-t-0 mb-0">{{ form_widget(form.firstName) }}</h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <h3 class="user-name m-t-0 mb-0">{{ form_widget(form.secondName) }}</h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <h3 class="user-name m-t-0 mb-0">{{ form_widget(form.lastName) }}</h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <h3 class="user-name m-t-0 mb-0">{{ form_widget(form.motherLastName) }}</h3>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <h6 class="text-muted">{{ form_widget(form.nationality) }}</h6>
-                                                    </div>
+                                    <div class="col-md-6 profile-info-left">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    {{ form_row(form.firstName) }}
                                                 </div>
                                             </div>
-
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        {{ form_label(form.documentType) }}  {{ form_widget(form.documentType) }}
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <div class="staff-id">{{ form_label(form.document) }}  {{ form_widget(form.document) }}</div>
-                                                    </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    {{ form_row(form.secondName) }}
                                                 </div>
                                             </div>
-
-                                            <div class="row align-items-center">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label class="col-form-label">{{ form_label(form.expirationDate) }}<span class="text-danger"> *</span></label>
-                                                        <div class="cal-icon">{{ form_widget(form.expirationDate, {'attr': {'class': 'form-control datetimepicker'}}) }}</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label class="col-form-label">{{ form_label(form.birthDay) }} <span class="text-danger"> *</span></label>
-                                                        <div class="cal-icon">{{ form_widget(form.birthDay, {'attr': {'class': 'form-control datetimepicker'}}) }}</div>
-                                                    </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    {{ form_row(form.lastName) }}
                                                 </div>
                                             </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    {{ form_row(form.motherLastName) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    {{ form_row(form.nationality) }}
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    {{ form_label(form.documentType) }}  
+                                                    {{ form_widget(form.documentType) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    {{ form_label(form.document) }}
+                                                    {{ form_widget(form.document) }}
+                                                </div>
+                                            </div>
+                                        </div>
 
-
+                                        <div class="row align-items-center">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    {{ form_label(form.expirationDate) }}<span class="text-danger"> *</span>
+                                                    <div class="cal-icon">{{ form_widget(form.expirationDate, {'attr': {'class': 'form-control datetimepicker'}}) }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    {{ form_label(form.birthDay) }} <span class="text-danger"> *</span>
+                                                    <div class="cal-icon">{{ form_widget(form.birthDay, {'attr': {'class': 'form-control datetimepicker'}}) }}</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-6">
                                         <ul class="personal-info">
                                             {# Inicio Tabla #}
                                             <div class="row">
                                                 <div class="col-md-12 col-sm-12">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover table-white">
-                                                            <thead>
-                                                            <tr>
-                                                                <td class="col-sm-2">
-                                                                    {{ form_label(form.cellPhone) }}
-                                                                </td>
-                                                                <td class="col-md-6">
-                                                                    {{ form_widget(form.cellPhone) }}
-                                                                </td>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    {{ form_label(form.personalEmail) }}
-                                                                </td>
-                                                                <td>
-                                                                    {{ form_widget(form.personalEmail) }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="col-form-label">{{ form_label(form.gender) }}<span class="text-danger"> *</span>  </label>
-                                                                </td>
-                                                                <td>
-                                                                    {{ form_widget(form.gender) }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="col-form-label">{{ form_label(form.age) }}<span class="text-danger"> *</span>  </label>
-                                                                </td>
-                                                                <td>
-                                                                    {{ form_widget(form.age) }}
-                                                                </td>
-                                                            </tr>
-
-                                                            </tbody>
-                                                        </table>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            {{ form_row(form.cellPhone) }}
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            {{ form_row(form.personalEmail) }}
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            {{ form_row(form.gender) }}
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            {{ form_row(form.age) }}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,114 +153,41 @@
                                 <ul class="personal-info">
                                     {# Inicio Tabla #}
                                     <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-white">
-                                                    <thead>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.birthPlace) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.birthPlace) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.fullResidenceAddress) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.fullResidenceAddress) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.maritalStatus) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.maritalStatus) }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.province) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.province) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.district) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.district) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.corregimiento) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.corregimiento) }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.residentialTelephone) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.residentialTelephone) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.sportsPractice) }}
-                                                        </td>
-                                                        <td>
-                                                            {% for child in form.sportsPractice %}
-                                                                <div class="form-check form-check-inline">
-                                                                    {{- form_widget(child) -}}
-                                                                    {{- form_label(child, null) -}}
-                                                                </div>
-                                                            {% endfor %}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.whatSports) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.whatSports) }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.favoriteHobby) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.favoriteHobby) }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.licenseType) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.licenseType) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.expirationDateLicense) }}
-                                                        </td>
-                                                        <td>
-                                                            <div class="cal-icon">{{ form_widget(form.expirationDateLicense) }}</div>
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.hasOwnCar) }}
-                                                        </td>
-                                                        <td>
-                                                            {% for child in form.hasOwnCar %}
-                                                                <div class="form-check form-check-inline">
-                                                                    {{- form_widget(child) -}}
-                                                                    {{- form_label(child, null) -}}
-                                                                </div>
-                                                            {% endfor %}
-                                                        </td>
-                                                    </tr>
-
-                                                    </tbody>
-                                                </table>
+                                        <div class="col-md-6">{{ form_row(form.birthPlace) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.fullResidenceAddress) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.maritalStatus) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.province) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.district) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.corregimiento) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.residentialTelephone) }}</div>
+                                        <div class="col-md-6">
+                                            {{ form_label(form.sportsPractice) }}
+                                            {% for child in form.sportsPractice %}
+                                                <div class="form-check form-check-inline">
+                                                    {{- form_widget(child) -}}
+                                                    {{- form_label(child, null) -}}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-md-6">{{ form_row(form.whatSports) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.favoriteHobby) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.licenseType) }}</div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                {{ form_label(form.expirationDateLicense) }}
+                                                <div class="cal-icon">
+                                                    {{ form_widget(form.expirationDateLicense) }}
+                                                </div>
                                             </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            {{ form_label(form.hasOwnCar) }}
+                                            {% for child in form.hasOwnCar %}
+                                                <div class="form-check form-check-inline">
+                                                    {{- form_widget(child) -}}
+                                                    {{- form_label(child, null) -}}
+                                                </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                     {# fin Tabla #}
@@ -315,87 +209,37 @@
                                 <ul class="personal-info">
                                     {# Inicio Tabla #}
                                     <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-white">
-                                                    <thead>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.inCaseOfEmergency) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.inCaseOfEmergency) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.familyPhoneNumber) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.familyPhoneNumber) }}
-                                                        </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.allergic) }}
-                                                        </td>
-                                                        <td>
-                                                            {% for child in form.allergic %}
-                                                                <div class="form-check form-check-inline">
-                                                                    {{- form_widget(child) -}}
-                                                                    {{- form_label(child, null) -}}
-                                                                </div>
-                                                            {% endfor %}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.allergicYes) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.allergicYes) }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.chronicDisease) }}
-                                                        </td>
-                                                        <td>
-                                                            {% for child in form.chronicDisease %}
-                                                                <div class="form-check form-check-inline">
-                                                                    {{- form_widget(child) -}}
-                                                                    {{- form_label(child, null) -}}
-                                                                </div>
-                                                            {% endfor %}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.chronicDiseaseYes) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.chronicDiseaseYes) }}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.bloodType) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.bloodType) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.bloodDonor) }}
-                                                        </td>
-                                                        <td>
-                                                            {% for child in form.bloodDonor %}
-                                                                <div class="form-check form-check-inline">
-                                                                    {{- form_widget(child) -}}
-                                                                    {{- form_label(child, null) -}}
-                                                                </div>
-                                                            {% endfor %}
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                        <div class="col-md-12">{{ form_row(form.inCaseOfEmergency) }}</div>
+                                        <div class="col-md-12">{{ form_row(form.familyPhoneNumber) }}</div>
+                                        <div class="col-md-6">
+                                            {{ form_label(form.allergic) }}
+                                            {% for child in form.allergic %}
+                                                <div class="form-check form-check-inline">
+                                                    {{- form_widget(child) -}}
+                                                    {{- form_label(child, null) -}}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-md-12">{{ form_row(form.allergicYes) }}</div>
+                                        <div class="col-md-6">
+                                            {{ form_label(form.chronicDisease) }}
+                                            {% for child in form.chronicDisease %}
+                                                <div class="form-check form-check-inline">
+                                                    {{- form_widget(child) -}}
+                                                    {{- form_label(child, null) -}}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-md-12">{{ form_row(form.chronicDiseaseYes) }}</div>
+                                        <div class="col-md-12">{{ form_row(form.bloodType) }}</div>
+                                        <div class="col-md-12">
+                                            {{ form_label(form.bloodDonor) }}
+                                            {% for child in form.bloodDonor %}
+                                                <div class="form-check form-check-inline">
+                                                    {{- form_widget(child) -}}
+                                                    {{- form_label(child, null) -}}
+                                                </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                     {# fin Tabla #}
@@ -411,50 +255,26 @@
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
                                 <h3 class="card-title">Bank information</h3>
-                                <ul class="personal-info">
+                                <div class="personal-info">
                                     {# Inicio Tabla #}
                                     <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-white">
-                                                    <thead>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.bank) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.bank) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.bankAccount) }}
-                                                        </td>
-                                                        <td>
-                                                            {% for child in form.bankAccount %}
-                                                                <div class="form-check form-check-inline">
-                                                                    {{- form_widget(child) -}}
-                                                                    {{- form_label(child, null) -}}
-                                                                </div>
-                                                            {% endfor %}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.accountNumber) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.accountNumber) }}
-                                                        </td>
-
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                        <div class="col-md-6">{{ form_row(form.bank) }}</div>
+                                        <div class="col-md-6">
+                                            {{ form_label(form.bankAccount) }}
+                                            {% for child in form.bankAccount %}
+                                                <div class="form-check form-check-inline">
+                                                    {{- form_widget(child) -}}
+                                                    {{- form_label(child, null) -}}
+                                                </div>
+                                            {% endfor %}
                                         </div>
+                                        <div class="col-md-12">{{ form_row(form.accountNumber) }}</div>
+
                                     </div>
                                     {# fin Tabla #}
-
-                                    {{ form_row(form.financialProfile) }}
-                                </ul>
+                                    {{ form_label(form.financialProfile) }}
+                                    {{ form_widget(form.financialProfile) }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -466,75 +286,23 @@
                                 <ul class="personal-info">
                                     {# Inicio Tabla #}
                                     <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-white">
-                                                    <thead>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.employeeType) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.employeeType) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.companyPosition) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.companyPosition) }}
-                                                        </td>
-
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.placeWork) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.placeWork) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.familyCompany) }}
-                                                        </td>
-                                                        <td>
-                                                            {% for child in form.familyCompany %}
-                                                                <div class="form-check form-check-inline">
-                                                                    {{- form_widget(child) -}}
-                                                                    {{- form_label(child, null) -}}
-                                                                </div>
-                                                            {% endfor %}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            {{ form_label(form.familyCompanyText) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.familyCompanyText) }}
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-
-                                                        <td>
-                                                            {{ form_label(form.companyDepartment) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_widget(form.companyDepartment) }}
-                                                        </td>
-                                                        <td>
-                                                            {{ form_label(form.dateJoiningCompany) }}
-                                                        </td>
-                                                        <td>
-                                                            <div class="cal-icon">{{ form_widget(form.dateJoiningCompany) }}</div>
-                                                        </td>
-                                                    </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                        <div class="col-md-6">{{ form_row(form.employeeType) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.companyPosition) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.placeWork) }}</div>
+                                        <div class="col-md-6">{{ form_row(form.companyDepartment) }}</div>
+                                        <div class="col-md-12">
+                                            {{ form_label(form.familyCompany) }}
+                                            {% for child in form.familyCompany %}
+                                                <div class="form-check form-check-inline">
+                                                    {{- form_widget(child) -}}
+                                                    {{- form_label(child, null) -}}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-md-12">{{ form_row(form.familyCompanyText) }}</div>
+                                        <div class="col-md-12">
+                                            {{ form_label(form.dateJoiningCompany) }}
+                                            <div class="cal-icon">{{ form_widget(form.dateJoiningCompany) }}</div>
                                         </div>
                                     </div>
                                     {# fin Tabla #}
@@ -697,3 +465,5 @@
 
 
 {% endblock %}
+
+
