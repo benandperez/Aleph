@@ -75,6 +75,30 @@
                             <div class="small text-muted">{{ employee.nationality }}</div>
                         </div>
                     </div>
+                    <!-- Delete Employee Modal -->
+                    <div class="modal custom-modal fade" id="delete_employee" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="form-header">
+                                        <h3>Delete Employee</h3>
+                                        <p>Are you sure want to delete?</p>
+                                    </div>
+                                    <div class="modal-btn delete-action">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <a href="{{ path('app_employees_delete', {'id': employee.id}) }}" class="btn btn-primary continue-btn">Delete</a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Delete Employee Modal -->
                 {% else %}
                     <div class="col-md-4 col-sm-6 col-12 col-lg-4 col-xl-3">
                         <p>No hay datos</p>

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\WorkingInformationRepository;
 use App\Util\TimeStampableEntity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,6 +36,14 @@ class WorkingInformation
 
     #[ORM\Column(length: 50, nullable: true)]
     private ?string $referencePhone = null;
+
+    #[ORM\ManyToMany(targetEntity: Employees::class, mappedBy: 'workingInformation')]
+    private Collection $employees;
+
+    public function __construct()
+    {
+        $this->employees = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -108,6 +118,33 @@ class WorkingInformation
     public function setReferencePhone(?string $referencePhone): self
     {
         $this->referencePhone = $referencePhone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Employees>
+     */
+    public function getEmployees(): Collection
+    {
+        return $this->employees;
+    }
+
+    public function addEmployee(Employees $employee): self
+    {
+        if (!$this->employees->contains($employee)) {
+            $this->employees->add($employee);
+            $employee->addWorkingInformation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmployee(Employees $employee): self
+    {
+        if ($this->employees->removeElement($employee)) {
+            $employee->removeWorkingInformation($this);
+        }
 
         return $this;
     }

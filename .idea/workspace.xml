@@ -6,6 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="ecdbe0f6-f04a-4b5e-ac14-c52c539768d0" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EmployeesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EmployeesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Corregimiento.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Corregimiento.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/EducationLevelType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/EducationLevelType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Employees.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Language.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Language.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/LanguageLevel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LanguageLevel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/PropertyStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PropertyStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Province.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Province.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/VehicleFeatures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/VehicleFeatures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/WorkingInformation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/WorkingInformation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EmployeesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EmployeesType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/LanguageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LanguageType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/VehicleFeaturesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/VehicleFeaturesType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/WorkingInformationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/WorkingInformationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/EmployeesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EmployeesRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Util/TimeStampableEntity.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Util/TimeStampableEntity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/employees/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/employees/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +187,7 @@
       <workItem from="1665451519966" duration="7699000" />
       <workItem from="1665583669439" duration="1739000" />
       <workItem from="1665598670227" duration="705000" />
-      <workItem from="1665602439711" duration="12176000" />
+      <workItem from="1665602439711" duration="29046000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1664586862261</created>

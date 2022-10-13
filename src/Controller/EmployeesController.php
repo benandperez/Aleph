@@ -23,7 +23,7 @@ class EmployeesController extends AbstractController
     public function index(EmployeesRepository $employeesRepository): Response
     {
         return $this->render('employees/index.html.twig', [
-            'employees' => $employeesRepository->findAll(),
+            'employees' => $employeesRepository->findByEmployeesByStatus(1),
         ]);
     }
 
@@ -41,10 +41,14 @@ class EmployeesController extends AbstractController
 
             $imageProfile = $form->get('imageProfile')->getData();
             $documentEmployee = $form->get('documentAll')->getData();
+            $documentEmployeeBanns = $form->get('documentBannsAll')->getData();
 
-            if ($imageProfile || $documentEmployee) {
-                $this->uploadFile($imageProfile, $documentEmployee, $employee, $blobService);
+            if ($imageProfile || $documentEmployee || $documentEmployeeBanns) {
+                $this->uploadFile($imageProfile, $documentEmployee, $documentEmployeeBanns, $employee, $blobService);
 
+            }else{
+                $container = $employee->getFirstName() . "-" . uniqid();;
+                $employee->setEmployeeFolderName($container);
             }
 
             $this->setDate($request, $employee,$orderDate, $personalReferencesRepository);
@@ -78,10 +82,14 @@ class EmployeesController extends AbstractController
             $orderDate = "Y/m/d";
             $imageProfile = $form->get('imageProfile')->getData();
             $documentEmployee = $form->get('documentAll')->getData();
+            $documentEmployeeBanns = $form->get('documentBannsAll')->getData();
 
-            if ($imageProfile || $documentEmployee) {
-                $this->uploadFile($imageProfile, $documentEmployee, $employee, $blobService, $update = true);
+            if ($imageProfile || $documentEmployee || $documentEmployeeBanns) {
+                $this->uploadFile($imageProfile, $documentEmployee, $documentEmployeeBanns, $employee, $blobService, $update = true);
 
+            }else{
+                $container = $employee->getFirstName() . "-" . uniqid();
+                $employee->setEmployeeFolderName($container);
             }
 
             $this->setDate($request, $employee, $orderDate, $personalReferencesRepository);
@@ -90,19 +98,25 @@ class EmployeesController extends AbstractController
             return $this->redirectToRoute('app_employees_index', [], Response::HTTP_SEE_OTHER);
         }
         $this->setDate($request, $employee, $orderDate, $personalReferencesRepository);
+        $blobsDocument = $blobService->listBlobsEmployee($_ENV['BLOBDOCUMENT'], $employee->getEmployeeFolderName());
+        $blobsDocumentBanns = $blobService->listBlobsEmployee($_ENV['BLOBDOCUMENT'], $_ENV['BLOBDOCUMENTBANNS']."-".$employee->getEmployeeFolderName());
         return $this->renderForm('employees/edit.html.twig', [
             'employee' => $employee,
-            'blobsDocument' => $blobService->listBlobsEmployee($_ENV['BLOBDOCUMENT'], $employee->getEmployeeFolderName()),
+            'blobsDocument' => $blobsDocument,
+            'blobsDocumentBanns' => $blobsDocumentBanns,
+            'banns' => $_ENV['BLOBDOCUMENTBANNS'],
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_employees_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_employees_delete')]
     public function delete(Request $request, Employees $employee, EmployeesRepository $employeesRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$employee->getId(), $request->request->get('_token'))) {
-            $employeesRepository->remove($employee, true);
-        }
+        $employee =$employeesRepository->findOneBy(["id" => $employee->getId()]);
+
+        $employee->setStatus(0);
+        $employeesRepository->add($employee, true);
+
 
         return $this->redirectToRoute('app_employees_index', [], Response::HTTP_SEE_OTHER);
     }
@@ -143,9 +157,8 @@ class EmployeesController extends AbstractController
 
     }
 
-    public function uploadFile($imageProfile, $documentsEmployee, $employee, $blobService, $update = false)
+    public function uploadFile($imageProfile, $documentsEmployee, $documentsEmployeeBanns, $employee, $blobService, $update = false)
     {
-
         $folderNameDocumentEmployee = $employee->getFirstName() . "-" . uniqid();
         if ($imageProfile) {
             if ($update) {
@@ -173,17 +186,33 @@ class EmployeesController extends AbstractController
                     $folderNameDocumentEmployee = $employee->getEmployeeFolderName() ;
                 }
 
-                $container = $folderNameDocumentEmployee;
-
-
                 foreach ($documentsEmployee as $documentEmployee) {
-                    $blobService->upload($documentEmployee, $_ENV['BLOBDOCUMENT']."/".$container);
+                    $blobService->upload($documentEmployee, $_ENV['BLOBDOCUMENT']."/".$folderNameDocumentEmployee);
                 }
-                $employee->setEmployeeFolderName($container);
+                $employee->setEmployeeFolderName($folderNameDocumentEmployee);
             } catch (FileException $ex) {
                 print_r($ex);
             }
 
+        }
+        if ($documentsEmployeeBanns){
+            try {
+                if ($update) {
+                    var_dump($employee->getEmployeeFolderName());
+                    $folderNameDocumentEmployee = $employee->getEmployeeFolderName() ;
+                }
+
+                foreach ($documentsEmployeeBanns as $documentEmployeeBanns) {
+                    $blobService->upload($documentEmployeeBanns, $_ENV['BLOBDOCUMENT']."/".$_ENV['BLOBDOCUMENTBANNS']."-".$folderNameDocumentEmployee);
+                }
+                $employee->setEmployeeFolderName($folderNameDocumentEmployee);
+            } catch (FileException $ex) {
+                print_r($ex);
+            }
+
+        }
+        if (!$documentsEmployee && !$documentsEmployeeBanns){
+            $employee->setEmployeeFolderName($folderNameDocumentEmployee);
         }
 
     }

@@ -188,6 +188,55 @@
                         });
                     }
                 });
+                $('.language-collection').collection({
+                    allow_down: false,
+                    allow_up:false,
+                    min: 1,
+                    prefix: 'language',
+                    after_add: function() {
+                        $('.language-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
+                });
+                $('.workingInformation-collection').collection({
+                    allow_down: false,
+                    allow_up:false,
+                    min: 1,
+                    prefix: 'language',
+                    after_add: function() {
+                        $('.workingInformation-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
+                });
+                $('.vehicleFeatures-collection').collection({
+                    allow_down: false,
+                    allow_up:false,
+                    min: 1,
+                    prefix: 'language',
+                    after_add: function() {
+                        $('.vehicleFeatures-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
+                });
+                $('.property-collection').collection({
+                    allow_down: false,
+                    allow_up:false,
+                    min: 1,
+                    prefix: 'language',
+                    after_add: function() {
+                        $('.property-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
+                });
+
                 $(document).ready(function(){
 
                     $('#imageProfile').on('click', function() {
