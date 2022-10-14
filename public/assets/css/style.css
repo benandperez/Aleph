@@ -7027,4 +7027,11 @@ button.close {
   color: #ED1642;
 }
 
+@media screen and (max-width: 992px){
+  [class*=-collection] > fieldset > div > .mb-3 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
