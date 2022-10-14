@@ -542,7 +542,7 @@ class EmployeesType extends AbstractType
                 'placeholder' => 'Select',
                 'multiple' => true ,
                 'attr' => [
-                    'data-placeholder' => 'choose roles',
+                    'data-placeholder' => 'choose Lugar de Trabajo',
                     'class' => 'select',
                 ] ,
             ])

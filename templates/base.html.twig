@@ -7,6 +7,12 @@
         <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta name="keywords" content="Hello! I&amp;apos;am&nbsp;Ann Norton!">
+        <meta name="description" content="">
+        <meta name="generator" content="Nicepage 4.19.5, nicepage.com">
+
         <title>{% block title %}Dashboard{% endblock %}</title>
 
         {% block stylesheets %}
@@ -33,6 +39,11 @@
 
             <!-- Main CSS -->
             <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+            <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+            <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+            <link rel="stylesheet" href="{{ asset('assets/css/nicepage.css') }}" media="screen">
+            <link rel="stylesheet" href="{{ asset('assets/css/Home-1.css') }}" media="screen">
 
         {% endblock %}
 
@@ -62,7 +73,7 @@
                         <div class="col-md-12">
                             <div class="welcome-box">
                                 <div class="welcome-img">
-                                    <img alt="" src="{{ asset('assets/img/profiles/avatar-02.jpg') }}">
+                                    <img alt="" src="{% if app.user.imageProfile %}{{ app.user.imageProfile}}{% else%}{{ asset('assets/img/profiles/avatar-02.jpg') }} {% endif %}">
                                 </div>
                                 <div class="welcome-det">
                                     <h3>Bienvenido, {{ app.user.email }}</h3>
@@ -107,6 +118,8 @@
 
             <!-- Custom JS -->
             <script src="{{ asset('assets/js/app.js') }}"></script>
+{#            <script class="u-script" type="text/javascript" src="{{ asset('assets/js/jquery.js') }}" defer=""></script>#}
+            <script class="u-script" type="text/javascript" src="{{ asset('assets/js/nicepage.js') }}" defer=""></script>
         {% endblock %}
         {% block myScripts %}
         <script type="text/javascript">
@@ -243,8 +256,20 @@
                         $('#employees_imageProfile').trigger('click');
                     });
 
+
                     $("#employees_imageProfile").change(function(){
                             var output = document.getElementById('imgPreview');
+                            output.src = URL.createObjectURL(event.target.files[0]);
+                            output.onload = function() {
+                                URL.revokeObjectURL(output.src) // free memory
+                            }
+                    });
+                    $('#imgPreviewUser').on('click', function() {
+                        $('#user_profileUser').trigger('click');
+                    });
+
+                    $("#user_profileUser").change(function(){
+                            var output = document.getElementById('imgUser');
                             output.src = URL.createObjectURL(event.target.files[0]);
                             output.onload = function() {
                                 URL.revokeObjectURL(output.src) // free memory

@@ -244,12 +244,12 @@
 
         <li class="nav-item dropdown has-arrow main-drop">
             <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-							<span class="user-img"><img src="{{ asset('assets/img/profiles/avatar-21.jpg') }}" alt="">
+							<span class="user-img"><img src="{% if app.user.imageProfile %}{{ app.user.imageProfile}}{% else%}{{ asset('assets/img/profiles/avatar-21.jpg') }} {% endif %}" alt="">
 							<span class="status online"></span></span>
                 <span>{{ app.user.email }}</span>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="">Mi perfil</a>
+                <a class="dropdown-item" href="{{ path('app_user_edit', {'id': app.user.id}) }}">Mi perfil</a>
                 <a class="dropdown-item" href="{{ path('app_logout') }}">Salir</a>
             </div>
         </li>
