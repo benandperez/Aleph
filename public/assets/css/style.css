@@ -7004,4 +7004,27 @@ button.close {
   white-space: nowrap;
 }
 
+[class*=-collection] fieldset {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+[class*=-collection] > fieldset > div {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+[class*=-collection] > fieldset > div > .mb-3 {
+  flex: 0 0 auto;
+  width: 50%;
+  padding: 0 15px;
+}
+[class*=-collection] [class*=-actions] {
+  justify-content: flex-start;
+}
+[class*=-collection] [class*=-actions] .fa {
+  font-size: 22px;
+  color: #ED1642;
+}
+
 /*# sourceMappingURL=style.css.map */
