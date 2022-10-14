@@ -5,7 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecdbe0f6-f04a-4b5e-ac14-c52c539768d0" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/public/assets/css/Home-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/css/nicepage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/-min-24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/-min.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/0fd3416c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/13064dd8-b859-4a0d-8b5b-0944d529a9c2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1384005-fd43df3b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1384005.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1384015-e5bc010a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1384015.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/58061-905a8369.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/58061.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/68f64b9d.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/75046ddc-63c4-a8b3-1d53-2745c1f8c894.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/8ad73f3c.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/b5f9e7f9-f0cf-42fb-96c9-3156bc7d64a2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/bg-7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/default-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/dfdf.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/gffgfgg-min.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/gggg-min.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/jkjk-min.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/vbvb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/vbvbvb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/vbvbvbvb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/vvv.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/jquery-1.9.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/js/nicepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Roles.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Roles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EmployeesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EmployeesType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,22 +160,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/develop/coko/proyectophp/Aleph/templates&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/develop/coko/proyectophp/Aleph/public/assets/css",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\develop\coko\proyectophp\Aleph\public\assets\css" />
+      <recent name="D:\develop\coko\proyectophp\Aleph\public\assets\img" />
+      <recent name="D:\develop\coko\proyectophp\Aleph\public\assets\js" />
       <recent name="D:\develop\coko\proyectophp\Aleph\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -168,6 +207,7 @@
       <workItem from="1665583669439" duration="1739000" />
       <workItem from="1665598670227" duration="705000" />
       <workItem from="1665602439711" duration="29278000" />
+      <workItem from="1665714928873" duration="12900000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1664586862261</created>

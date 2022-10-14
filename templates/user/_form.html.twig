@@ -1,0 +1,65 @@
+{% block body %}
+{{ form_start(form) }}
+    <div class="card mb-0">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="profile-view">
+                        <div class="profile-img-wrap">
+                            <div class="profile-img">
+                                {{ form_widget(form.profileUser, {'attr': {'style': 'display: none;'}}) }}
+                                <a href="#" id="imgPreviewUser"><img alt="" src="{% if user.imageProfile %}{{ user.imageProfile}}{% else%}{{ asset('assets/img/profiles/avatar-02.jpg') }} {% endif %}" id="imgUser"></a>
+                            </div>
+                        </div>
+                        {#profile-basic#}
+                        <div class="profile-basic">
+                            <div class="row">
+                                <div class="col-md-6 profile-info-left">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                {{ form_row(form.firstName) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                {{ form_row(form.lastName) }}
+                                            </div>
+                                            {% if 'ROLE_ADMIN' in app.user.roles %}
+                                                </div>
+                                                    <div class="form-group">
+                                                        {{ form_row(form.email) }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        {{ form_row(form.roles) }}
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        {{ form_row(form.password) }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                    </div>
+
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                {{ form_label(form.status) }}
+                                                {{ form_widget(form.status) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary submit-btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+{% endblock %}

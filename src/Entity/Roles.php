@@ -25,6 +25,10 @@ class Roles
     #[ORM\Column]
     private ?bool $status = null;
 
+    public static function attr(\App\Form\UserType $param, \Closure $param1)
+    {
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -64,5 +68,9 @@ class Roles
         $this->status = $status;
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->getName();
     }
 }
