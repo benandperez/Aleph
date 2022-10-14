@@ -22,19 +22,23 @@
         <!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
+        <!-- Login CSS -->
+        <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+
     {% endblock %}
 
 
 </head>
 <body class="account-page">
-    <div class="main-wrapper">
-        <div class="account-content">
-            <div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <div id="form-section" class="col-sm-12 col-lg-5">
                 <div class="account-logo">
                     <a href=""><img src="{{ asset('assets/img/logos/logoAmarillo.png') }}" alt="Logo"></a>
                 </div>
                 {% block body %}{% endblock %}
             </div>
+            <div id="background-section" class="col-lg-7 d-none-lg d-block"></div>
         </div>
     </div>
 

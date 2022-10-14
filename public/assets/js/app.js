@@ -44,12 +44,12 @@ $(document).ready(function() {
 	
 	$("#toggle-password").click(function () {
 		$( this ).toggleClass("fa-eye fa-eye-slash");
-        if ($("#password").attr("type") == "password")
+        if ($("#inputPassword").attr("type") == "password")
         {
-            $("#password").attr("type", "text");
+            $("#inputPassword").attr("type", "text");
         } else
         {
-            $("#password").attr("type", "password");
+            $("#inputPassword").attr("type", "password");
         }
     });
 

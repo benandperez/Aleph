@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+#form-section, #background-section {
+  height: 100vh;
+}
+
+#background-section {
+  background: url("../img/login-bg.jpg") center center/cover no-repeat !important;
+}
+
+.account-logo {
+  padding: 10% 11%;
+  text-align: center;
+}
+
+.account-box {
+  max-width: 80%;
+  margin: 10% auto;
+}
+
+#toggle-password {
+  cursor: pointer;
+  margin-right: 1px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+.account-btn {
+  background: #F7BA33;
+  border: 0;
+  display: block;
+  font-size: 22px;
+  color: #000;
+  width: 100%;
+  border-radius: 4px;
+  padding: 10px 26px;
+}
