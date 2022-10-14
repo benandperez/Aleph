@@ -1855,8 +1855,7 @@ input[type=file].form-control {
 }
 
 .header {
-  background: #F7BA33;
-  background: linear-gradient(to right, #ffffff 30%, #F7BA33 100%);
+  background: #ED1642;
   border-bottom: 1px solid transparent;
   height: 60px;
   z-index: 1002;
@@ -1903,7 +1902,7 @@ input[type=file].form-control {
     width: 21px;
   }
   .header #toggle_btn .bar-icon span {
-    background-color: #34444c;
+    background-color: #ffffff;
     display: block;
     float: left;
     height: 2px;
@@ -1928,7 +1927,7 @@ input[type=file].form-control {
   }
 }
 .header .page-title-box h3 {
-  color: #34444c;
+  color: #ffffff;
   font-size: 20px;
   font-weight: normal;
   margin: 0;
