@@ -27,9 +27,13 @@ class EmployeeType
     #[ORM\OneToMany(mappedBy: 'employeeType', targetEntity: Employees::class)]
     private Collection $employees;
 
+    #[ORM\OneToMany(mappedBy: 'employeeType', targetEntity: LaborInformationAlephGroup::class)]
+    private Collection $laborInformationAlephGroups;
+
     public function __construct()
     {
         $this->employees = new ArrayCollection();
+        $this->laborInformationAlephGroups = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,6 +89,36 @@ class EmployeeType
             // set the owning side to null (unless already changed)
             if ($employee->getEmployeeType() === $this) {
                 $employee->setEmployeeType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LaborInformationAlephGroup>
+     */
+    public function getLaborInformationAlephGroups(): Collection
+    {
+        return $this->laborInformationAlephGroups;
+    }
+
+    public function addLaborInformationAlephGroup(LaborInformationAlephGroup $laborInformationAlephGroup): self
+    {
+        if (!$this->laborInformationAlephGroups->contains($laborInformationAlephGroup)) {
+            $this->laborInformationAlephGroups->add($laborInformationAlephGroup);
+            $laborInformationAlephGroup->setEmployeeType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLaborInformationAlephGroup(LaborInformationAlephGroup $laborInformationAlephGroup): self
+    {
+        if ($this->laborInformationAlephGroups->removeElement($laborInformationAlephGroup)) {
+            // set the owning side to null (unless already changed)
+            if ($laborInformationAlephGroup->getEmployeeType() === $this) {
+                $laborInformationAlephGroup->setEmployeeType(null);
             }
         }
 

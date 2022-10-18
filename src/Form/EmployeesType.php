@@ -17,6 +17,7 @@ use App\Entity\MaritalStatus;
 use App\Entity\PlaceWork;
 use App\Entity\Province;
 use App\Entity\WorkingInformation;
+use App\Repository\LaborInformationAlephGroupRepository;
 use App\Util\DateTimeTransformer;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -483,87 +484,19 @@ class EmployeesType extends AbstractType
             ])
 
             //Información Laboral ALEPH GROUP
-            ->add('companyPosition', null, [
-                'required' => true,
-                'label' => 'Cargo en la empresa:',
-                'attr' => [
-                    'autocomplete' => 'off',
-                    'class' => 'form-control'
-                ],
-            ])
-            ->add('employeeType', EntityType::class, [
-                'class' => EmployeeType::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('et')
-                        ->andWhere('et.status = :status')
-                        ->setParameter('status', '1')
-                        ->orderBy('et.name', 'ASC');
-                },
-                'choice_label' => 'name',
-                'label' => 'Tipo de empleado: ',
-                'attr' => [
-                    'class' => 'select',
-                ],
-            ])
-            ->add('companyDepartment', EntityType::class, [
-                'class' => CompanyDepartment::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('cd')
-                        ->andWhere('cd.status = :status')
-                        ->setParameter('status', '1')
-                        ->orderBy('cd.name', 'ASC');
-                },
-                'choice_label' => 'name',
-                'label' => 'Departamento: ',
-                'attr' => [
-                    'class' => 'select',
-                ],
-            ])
-            ->add('dateJoiningCompany', DateType::class, [
-                'widget' => 'single_text',
-                'html5' => false,
-                'required' => true,
-                'label' => 'Fecha de ingreso a la empresa: ',
-                'format' => 'yyyy-MM-dd',
-                'attr' => [
-                    'class' => 'form-control datetimepicker'
-                ],
-            ])
-            ->add('placeWork', EntityType::class, [
-                'class' => PlaceWork::class,
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('b')
-                        ->andWhere('b.status = :status')
-                        ->setParameter('status', '1')
-                        ->orderBy('b.name', 'ASC');
-                },
-                'choice_label' => 'name',
-                'label' => 'Lugar donde desarrolla su trabajo: ',
-                'placeholder' => 'Select',
-                'multiple' => true ,
-                'attr' => [
-                    'data-placeholder' => 'choose Lugar de Trabajo',
-                    'class' => 'select',
-                ] ,
-            ])
-            ->add('familyCompany', ChoiceType::class, [
-                'required' => true,
-                'label' => 'Tiene algún familiar laborando en la empresa: ',
-                'choices'  => [
-                    'SÍ' => true,
-                    'NO' => false,
-                ],
-                'expanded' => true,
-                'attr' => [
-                    'class' => 'form-check-input'
-                ],
-            ])
-            ->add('familyCompanyText', null, [
-                'required' => true,
-                'label' => false,
-                'attr' => [
-                    'autocomplete' => 'off',
-                    'class' => 'form-control'
+            ->add('laborInformationAlephGroup', CollectionType::class, [
+                'entry_type' => LaborInformationAlephGroupType::class,
+                'by_reference' => false,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'prototype'    => true,
+                'required'     => false,
+                'delete_empty' => true,
+                'attr' => array(
+                    'class' => 'laborInformationAlephGroup-collection',
+                ),
+                'entry_options' => [
+                    'label' => false,
                 ],
             ])
 
@@ -679,8 +612,6 @@ class EmployeesType extends AbstractType
                     'label' => false,
                 ],
             ])
-
-
 
             //Experience
             ->add('workingInformation', CollectionType::class, [

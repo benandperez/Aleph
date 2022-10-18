@@ -132,29 +132,6 @@ class Employees
 
     #[ORM\ManyToOne(inversedBy: 'employees')]
     private ?Bank $bank = null;
-    
-    // Seccion de Información Laboral ALEPH GROUP
-
-    #[ORM\ManyToMany(targetEntity: PlaceWork::class, inversedBy: 'employees')]
-    private Collection $placeWork;
-
-    #[ORM\Column]
-    private ?bool $familyCompany = null;
-
-    #[ORM\Column(length: 50, nullable: true)]
-    private ?string $familyCompanyText = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dateJoiningCompany = null;
-
-    #[ORM\ManyToOne(inversedBy: 'employees')]
-    private ?CompanyPosition $companyPosition = null;
-
-    #[ORM\ManyToOne(inversedBy: 'employees')]
-    private ?EmployeeType $employeeType = null;
-
-    #[ORM\ManyToOne(inversedBy: 'employees')]
-    private ?CompanyDepartment $companyDepartment = null;
 
     #[ORM\ManyToMany(targetEntity: PersonalReferences::class, inversedBy: 'employees', cascade: ['persist'])]
     private Collection $personalReferences;
@@ -192,9 +169,26 @@ class Employees
     #[ORM\Column]
     private ?bool $status = null;
 
+    #[ORM\ManyToMany(targetEntity: LaborInformationAlephGroup::class, inversedBy: 'employees', cascade: ['persist'])]
+    private Collection $laborInformationAlephGroup;
+
+    #[ORM\ManyToMany(targetEntity: LaborInformationAlephGroup::class, mappedBy: 'coordinator')]
+    private Collection $laborInformationAlephGroups;
+
+    #[ORM\OneToMany(mappedBy: 'director', targetEntity: LaborInformationAlephGroup::class)]
+    private Collection $director;
+
+    #[ORM\OneToMany(mappedBy: 'executiveDirector', targetEntity: LaborInformationAlephGroup::class)]
+    private Collection $executiveDirector;
+
+    #[ORM\OneToMany(mappedBy: 'employee', targetEntity: AchievedGoals::class)]
+    private Collection $achievedGoals;
+
+    #[ORM\OneToMany(mappedBy: 'employee', targetEntity: UnfulfilledGoals::class)]
+    private Collection $unfulfilledGoals;
+
     public function __construct()
     {
-        $this->placeWork = new ArrayCollection();
         $this->personalReferences = new ArrayCollection();
         $this->familyNucleus = new ArrayCollection();
         $this->financialProfile = new ArrayCollection();
@@ -204,6 +198,12 @@ class Employees
         $this->workingInformation = new ArrayCollection();
         $this->vehicleFeatures = new ArrayCollection();
         $this->property = new ArrayCollection();
+        $this->laborInformationAlephGroup = new ArrayCollection();
+        $this->laborInformationAlephGroups = new ArrayCollection();
+        $this->director = new ArrayCollection();
+        $this->executiveDirector = new ArrayCollection();
+        $this->achievedGoals = new ArrayCollection();
+        $this->unfulfilledGoals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -672,104 +672,6 @@ class Employees
         return $this;
     }
 
-    // Seccion de Información Laboral ALEPH GROUP
-
-    /**
-     * @return Collection<int, PlaceWork>
-     */
-    public function getPlaceWork(): Collection
-    {
-        return $this->placeWork;
-    }
-
-    public function addPlaceWork(PlaceWork $placeWork): self
-    {
-        if (!$this->placeWork->contains($placeWork)) {
-            $this->placeWork->add($placeWork);
-        }
-
-        return $this;
-    }
-
-    public function removePlaceWork(PlaceWork $placeWork): self
-    {
-        $this->placeWork->removeElement($placeWork);
-
-        return $this;
-    }
-
-    public function isFamilyCompany(): ?bool
-    {
-        return $this->familyCompany;
-    }
-
-    public function setFamilyCompany(bool $familyCompany): self
-    {
-        $this->familyCompany = $familyCompany;
-
-        return $this;
-    }
-
-    public function getFamilyCompanyText(): ?string
-    {
-        return $this->familyCompanyText;
-    }
-
-    public function setFamilyCompanyText(?string $familyCompanyText): self
-    {
-        $this->familyCompanyText = $familyCompanyText;
-
-        return $this;
-    }
-
-    public function getDateJoiningCompany(): ?\DateTimeInterface
-    {
-        return $this->dateJoiningCompany;
-    }
-
-    public function setDateJoiningCompany(\DateTimeInterface $dateJoiningCompany): self
-    {
-        $this->dateJoiningCompany = $dateJoiningCompany;
-
-        return $this;
-    }
-
-    public function getCompanyPosition(): ?CompanyPosition
-    {
-        return $this->companyPosition;
-    }
-
-    public function setCompanyPosition(?CompanyPosition $companyPosition): self
-    {
-        $this->companyPosition = $companyPosition;
-
-        return $this;
-    }
-
-    public function getEmployeeType(): ?EmployeeType
-    {
-        return $this->employeeType;
-    }
-
-    public function setEmployeeType(?EmployeeType $employeeType): self
-    {
-        $this->employeeType = $employeeType;
-
-        return $this;
-    }
-
-    public function getCompanyDepartment(): ?CompanyDepartment
-    {
-        return $this->companyDepartment;
-    }
-
-    public function setCompanyDepartment(?CompanyDepartment $companyDepartment): self
-    {
-        $this->companyDepartment = $companyDepartment;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, PersonalReferences>
      */
@@ -1020,5 +922,162 @@ class Employees
         $this->status = $status;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, LaborInformationAlephGroup>
+     */
+    public function getLaborInformationAlephGroup(): Collection
+    {
+        return $this->laborInformationAlephGroup;
+    }
+
+    public function addLaborInformationAlephGroup(LaborInformationAlephGroup $laborInformationAlephGroup): self
+    {
+        if (!$this->laborInformationAlephGroup->contains($laborInformationAlephGroup)) {
+            $this->laborInformationAlephGroup->add($laborInformationAlephGroup);
+        }
+
+        return $this;
+    }
+
+    public function removeLaborInformationAlephGroup(LaborInformationAlephGroup $laborInformationAlephGroup): self
+    {
+        $this->laborInformationAlephGroup->removeElement($laborInformationAlephGroup);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LaborInformationAlephGroup>
+     */
+    public function getLaborInformationAlephGroups(): Collection
+    {
+        return $this->laborInformationAlephGroups;
+    }
+
+    /**
+     * @return Collection<int, LaborInformationAlephGroup>
+     */
+    public function getDirector(): Collection
+    {
+        return $this->director;
+    }
+
+    public function addDirector(LaborInformationAlephGroup $director): self
+    {
+        if (!$this->director->contains($director)) {
+            $this->director->add($director);
+            $director->setDirector($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDirector(LaborInformationAlephGroup $director): self
+    {
+        if ($this->director->removeElement($director)) {
+            // set the owning side to null (unless already changed)
+            if ($director->getDirector() === $this) {
+                $director->setDirector(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LaborInformationAlephGroup>
+     */
+    public function getExecutiveDirector(): Collection
+    {
+        return $this->executiveDirector;
+    }
+
+    public function addExecutiveDirector(LaborInformationAlephGroup $executiveDirector): self
+    {
+        if (!$this->executiveDirector->contains($executiveDirector)) {
+            $this->executiveDirector->add($executiveDirector);
+            $executiveDirector->setExecutiveDirector($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExecutiveDirector(LaborInformationAlephGroup $executiveDirector): self
+    {
+        if ($this->executiveDirector->removeElement($executiveDirector)) {
+            // set the owning side to null (unless already changed)
+            if ($executiveDirector->getExecutiveDirector() === $this) {
+                $executiveDirector->setExecutiveDirector(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AchievedGoals>
+     */
+    public function getAchievedGoals(): Collection
+    {
+        return $this->achievedGoals;
+    }
+
+    public function addAchievedGoal(AchievedGoals $achievedGoal): self
+    {
+        if (!$this->achievedGoals->contains($achievedGoal)) {
+            $this->achievedGoals->add($achievedGoal);
+            $achievedGoal->setEmployee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAchievedGoal(AchievedGoals $achievedGoal): self
+    {
+        if ($this->achievedGoals->removeElement($achievedGoal)) {
+            // set the owning side to null (unless already changed)
+            if ($achievedGoal->getEmployee() === $this) {
+                $achievedGoal->setEmployee(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UnfulfilledGoals>
+     */
+    public function getUnfulfilledGoals(): Collection
+    {
+        return $this->unfulfilledGoals;
+    }
+
+    public function addUnfulfilledGoal(UnfulfilledGoals $unfulfilledGoal): self
+    {
+        if (!$this->unfulfilledGoals->contains($unfulfilledGoal)) {
+            $this->unfulfilledGoals->add($unfulfilledGoal);
+            $unfulfilledGoal->setEmployee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUnfulfilledGoal(UnfulfilledGoals $unfulfilledGoal): self
+    {
+        if ($this->unfulfilledGoals->removeElement($unfulfilledGoal)) {
+            // set the owning side to null (unless already changed)
+            if ($unfulfilledGoal->getEmployee() === $this) {
+                $unfulfilledGoal->setEmployee(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->getFirstName().' '.$this->getLastName();
+        // TODO: Implement __toString() method.
     }
 }

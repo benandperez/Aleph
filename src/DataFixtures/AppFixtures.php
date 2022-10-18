@@ -5,6 +5,8 @@ namespace App\DataFixtures;
 use App\Entity\AccountType;
 use App\Entity\Bank;
 use App\Entity\BloodType;
+use App\Entity\CompanyDepartment;
+use App\Entity\CompanyPosition;
 use App\Entity\Corregimiento;
 use App\Entity\District;
 use App\Entity\DocumentType;
@@ -35,15 +37,21 @@ class AppFixtures extends Fixture
 
 
         $user = new User();
+        $user->setFirstName("Benjamin");
+        $user->setLastName("Perez");
         $user->setEmail('bperez@hotmail.com');
         $user->setPassword($this->passwordHasher->hashPassword($user,'password'));
         $user->setRoles(["ROLE_ADMIN"]);
+        $user->setStatus(true);
         $manager->persist($user);
 
         $user2 = new User();
+        $user2->setFirstName("Benjamin");
+        $user2->setLastName("Perez");
         $user2->setEmail('bperez2@hotmail.com');
         $user2->setPassword($this->passwordHasher->hashPassword($user2,'password'));
         $user2->setRoles(["ROLE_USER"]);
+        $user2->setStatus(true);
         $manager->persist($user2);
 
 
@@ -926,6 +934,64 @@ class AppFixtures extends Fixture
         $languageLevel3->setCreatedAt(new \DateTime());
         $languageLevel3->setUpdatedAt(new \DateTime());
         $manager->persist($languageLevel3);
+
+
+
+        $companyPosition = new CompanyPosition();
+        $companyPosition->setName('Director Ejecutivo');
+        $companyPosition->setStatus(true);
+        $companyPosition->setCreatedAt(new \DateTime());
+        $companyPosition->setUpdatedAt(new \DateTime());
+        $manager->persist($companyPosition);
+
+        $companyPosition = new CompanyPosition();
+        $companyPosition->setName('Director Comercial');
+        $companyPosition->setStatus(true);
+        $companyPosition->setCreatedAt(new \DateTime());
+        $companyPosition->setUpdatedAt(new \DateTime());
+        $manager->persist($companyPosition);
+
+        $companyPosition = new CompanyPosition();
+        $companyPosition->setName('Director de Recursos Humanos, SISOMA Y Calidad');
+        $companyPosition->setStatus(true);
+        $companyPosition->setCreatedAt(new \DateTime());
+        $companyPosition->setUpdatedAt(new \DateTime());
+        $manager->persist($companyPosition);
+
+        $companyPosition = new CompanyPosition();
+        $companyPosition->setName('Director de Logística');
+        $companyPosition->setStatus(true);
+        $companyPosition->setCreatedAt(new \DateTime());
+        $companyPosition->setUpdatedAt(new \DateTime());
+        $manager->persist($companyPosition);
+
+        $companyPosition = new CompanyPosition();
+        $companyPosition->setName('Director Financiero y Administrativo');
+        $companyPosition->setStatus(true);
+        $companyPosition->setCreatedAt(new \DateTime());
+        $companyPosition->setUpdatedAt(new \DateTime());
+        $manager->persist($companyPosition);
+
+        $CompanyDepartment = new CompanyDepartment();
+        $CompanyDepartment->setName('RRHH');
+        $CompanyDepartment->setStatus(true);
+        $CompanyDepartment->setCreatedAt(new \DateTime());
+        $CompanyDepartment->setUpdatedAt(new \DateTime());
+        $manager->persist($CompanyDepartment);
+
+        $CompanyDepartment = new CompanyDepartment();
+        $CompanyDepartment->setName('IT');
+        $CompanyDepartment->setStatus(true);
+        $CompanyDepartment->setCreatedAt(new \DateTime());
+        $CompanyDepartment->setUpdatedAt(new \DateTime());
+        $manager->persist($CompanyDepartment);
+
+        $CompanyDepartment = new CompanyDepartment();
+        $CompanyDepartment->setName('SEGURIDAD Y CALIDAD');
+        $CompanyDepartment->setStatus(true);
+        $CompanyDepartment->setCreatedAt(new \DateTime());
+        $CompanyDepartment->setUpdatedAt(new \DateTime());
+        $manager->persist($CompanyDepartment);
 
 
 

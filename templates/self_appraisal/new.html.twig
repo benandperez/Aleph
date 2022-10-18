@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SelfAppraisal{% endblock %}
+
+{% block body %}
+    <h1>Create new SelfAppraisal</h1>
+
+    {{ include('self_appraisal/_form.html.twig') }}
+
+    <a href="{{ path('app_self_appraisal_index') }}">back to list</a>
+{% endblock %}

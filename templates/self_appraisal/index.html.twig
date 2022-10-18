@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SelfAppraisal index{% endblock %}
+
+{% block body %}
+    <h1>SelfAppraisal index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for self_appraisal in self_appraisals %}
+            <tr>
+                <td>{{ self_appraisal.id }}</td>
+                <td>{{ self_appraisal.description }}</td>
+                <td>
+                    <a href="{{ path('app_self_appraisal_show', {'id': self_appraisal.id}) }}">show</a>
+                    <a href="{{ path('app_self_appraisal_edit', {'id': self_appraisal.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_self_appraisal_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New LaborInformationAlephGroup{% endblock %}
+
+{% block body %}
+    <h1>Create new LaborInformationAlephGroup</h1>
+
+    {{ include('labor_information_aleph_group/_form.html.twig') }}
+
+    <a href="{{ path('app_labor_information_aleph_group_index') }}">back to list</a>
+{% endblock %}

@@ -30,9 +30,13 @@ class PlaceWork
     #[ORM\ManyToMany(targetEntity: Employees::class, mappedBy: 'placeWork')]
     private Collection $employees;
 
+    #[ORM\ManyToMany(targetEntity: LaborInformationAlephGroup::class, mappedBy: 'placeWork')]
+    private Collection $laborInformationAlephGroups;
+
     public function __construct()
     {
         $this->employees = new ArrayCollection();
+        $this->laborInformationAlephGroups = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -98,6 +102,33 @@ class PlaceWork
     {
         if ($this->employees->removeElement($employee)) {
             $employee->removePlaceWork($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LaborInformationAlephGroup>
+     */
+    public function getLaborInformationAlephGroups(): Collection
+    {
+        return $this->laborInformationAlephGroups;
+    }
+
+    public function addLaborInformationAlephGroup(LaborInformationAlephGroup $laborInformationAlephGroup): self
+    {
+        if (!$this->laborInformationAlephGroups->contains($laborInformationAlephGroup)) {
+            $this->laborInformationAlephGroups->add($laborInformationAlephGroup);
+            $laborInformationAlephGroup->addPlaceWork($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLaborInformationAlephGroup(LaborInformationAlephGroup $laborInformationAlephGroup): self
+    {
+        if ($this->laborInformationAlephGroups->removeElement($laborInformationAlephGroup)) {
+            $laborInformationAlephGroup->removePlaceWork($this);
         }
 
         return $this;

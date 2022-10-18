@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit UnfulfilledGoals{% endblock %}
+
+{% block body %}
+    <h1>Edit UnfulfilledGoals</h1>
+
+    {{ include('unfulfilled_goals/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_unfulfilled_goals_index') }}">back to list</a>
+
+    {{ include('unfulfilled_goals/_delete_form.html.twig') }}
+{% endblock %}

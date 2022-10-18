@@ -4,21 +4,31 @@ namespace App\Controller;
 
 use App\Entity\Employees;
 use App\Entity\PersonalReferences;
+use App\Entity\User;
 use App\Form\EmployeesType;
 use App\Repository\EmployeesRepository;
 use App\Repository\PersonalReferencesRepository;
 use App\Service\BlobService;
+use Doctrine\ORM\EntityManagerInterface;
 use PhpParser\Node\Expr\New_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/employees')]
 class EmployeesController extends AbstractController
 {
+
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
     #[Route('/', name: 'app_employees_index', methods: ['GET'])]
     public function index(EmployeesRepository $employeesRepository): Response
     {
@@ -28,13 +38,11 @@ class EmployeesController extends AbstractController
     }
 
     #[Route('/new', name: 'app_employees_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository, BlobService $blobService): Response
+    public function new(Request $request, EmployeesRepository $employeesRepository, PersonalReferencesRepository $personalReferencesRepository, BlobService $blobService, EntityManagerInterface $entityManager): Response
     {
         $employee = new Employees();
         $form = $this->createForm(EmployeesType::class, $employee);
         $form->handleRequest($request);
-
-        //dd($employee, $request, $form, $form->get('documentAll')->getData());
 
         if ($form->isSubmitted()) {
             $orderDate = "Y/m/d";
@@ -50,6 +58,17 @@ class EmployeesController extends AbstractController
                 $container = $employee->getFirstName() . "-" . uniqid();;
                 $employee->setEmployeeFolderName($container);
             }
+            $employee->setStatus(1);
+
+            $user = new User();
+            $user->setFirstName($employee->getFirstName());
+            $user->setLastName($employee->getLastName());
+            $user->setEmail($employee->getPersonalEmail());
+            $user->setPassword($this->passwordHasher->hashPassword($user, $employee->getDocument()));
+            $user->setRoles(["ROLE_USER"]);
+            $user->setStatus(true);
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             $this->setDate($request, $employee,$orderDate, $personalReferencesRepository);
             $employeesRepository->add($employee, true);
@@ -93,6 +112,7 @@ class EmployeesController extends AbstractController
             }
 
             $this->setDate($request, $employee, $orderDate, $personalReferencesRepository);
+            $employee->setStatus(1);
             $employeesRepository->add($employee, true);
 
             return $this->redirectToRoute('app_employees_index', [], Response::HTTP_SEE_OTHER);
@@ -134,14 +154,14 @@ class EmployeesController extends AbstractController
             $date = explode("/", $request->request->all()["employees"]["expirationDateLicense"]);
             $dateExpirationDateLicense = new \DateTime(date($orderDate, strtotime($date[2]."-".$date[1]."-".$date[0])));
 
-            $date = explode("/", $request->request->all()["employees"]["dateJoiningCompany"]);
-            $dateDateJoiningCompany = new \DateTime(date($orderDate, strtotime($date[2]."-".$date[1]."-".$date[0])));
+//            $date = explode("/", $request->request->all()["employees"]["dateJoiningCompany"]);
+//            $dateDateJoiningCompany = new \DateTime(date($orderDate, strtotime($date[2]."-".$date[1]."-".$date[0])));
 
 
             $employee->setExpirationDate($dateExpirationDate);
             $employee->setBirthDay($dateBirthDay);
             $employee->setExpirationDateLicense($dateExpirationDateLicense);
-            $employee->setDateJoiningCompany($dateDateJoiningCompany);
+//            $employee->setDateJoiningCompany($dateDateJoiningCompany);
             if (count($employee->getPersonalReferences()) > 0) {
                 foreach ($request->request->all()["employees"]["personalReferences"] as $personalReference) {
                     $date = explode("/", $personalReference["birthDay"]);

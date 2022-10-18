@@ -267,6 +267,50 @@
                         });
                     }
                 });
+                $('.laborInformationAlephGroup-collection').collection({
+                    add: '<a href="#" class="btn btn-default"><span class="fa fa-plus-circle"></span></a>',
+                    remove: '<a href="#" class="btn btn-default"><span class="fa fa-minus-circle"></span></a>',
+                    allow_down: false,
+                    allow_up:false,
+                    min: 1,
+                    prefix: 'laborInformationAlephGroup',
+                    after_add: function() {
+                        $('.laborInformationAlephGroup-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
+                });
+                $('.achievedGoals-collection').collection({
+                    add: '<a href="#" class="btn btn-default"><span class="fa fa-plus-circle"></span></a>',
+                    remove: '<a href="#" class="btn btn-default"><span class="fa fa-minus-circle"></span></a>',
+                    allow_down: false,
+                    allow_up:false,
+                    min: 1,
+                    max:5,
+                    prefix: 'achievedGoals',
+                    after_add: function() {
+                        $('.achievedGoals-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
+                });
+                $('.unfulfilledGoals-collection').collection({
+                    add: '<a href="#" class="btn btn-default"><span class="fa fa-plus-circle"></span></a>',
+                    remove: '<a href="#" class="btn btn-default"><span class="fa fa-minus-circle"></span></a>',
+                    allow_down: false,
+                    allow_up:false,
+                    min: 1,
+                    max:5,
+                    prefix: 'unfulfilledGoals',
+                    after_add: function() {
+                        $('.unfulfilledGoals-collection .select').select2({
+                            minimumResultsForSearch: -1,
+                            width: '100%'
+                        });
+                    }
+                });
 
                 $(document).ready(function(){
 

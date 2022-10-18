@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AchievedGoals index{% endblock %}
+
+{% block body %}
+    <h1>AchievedGoals index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>AchievedGoals</th>
+                <th>ReasonsAchievement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for achieved_goal in achieved_goals %}
+            <tr>
+                <td>{{ achieved_goal.id }}</td>
+                <td>{{ achieved_goal.achievedGoals }}</td>
+                <td>{{ achieved_goal.reasonsAchievement }}</td>
+                <td>
+                    <a href="{{ path('app_achieved_goals_show', {'id': achieved_goal.id}) }}">show</a>
+                    <a href="{{ path('app_achieved_goals_edit', {'id': achieved_goal.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_achieved_goals_new') }}">Create new</a>
+{% endblock %}

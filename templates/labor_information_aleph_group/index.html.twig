@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LaborInformationAlephGroup index{% endblock %}
+
+{% block body %}
+    <h1>LaborInformationAlephGroup index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FamilyCompany</th>
+                <th>FamilyCompanyText</th>
+                <th>DateJoiningCompany</th>
+                <th>DateEndCompany</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for labor_information_aleph_group in labor_information_aleph_groups %}
+            <tr>
+                <td>{{ labor_information_aleph_group.id }}</td>
+                <td>{{ labor_information_aleph_group.familyCompany ? 'Yes' : 'No' }}</td>
+                <td>{{ labor_information_aleph_group.familyCompanyText }}</td>
+                <td>{{ labor_information_aleph_group.dateJoiningCompany ? labor_information_aleph_group.dateJoiningCompany|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ labor_information_aleph_group.dateEndCompany ? labor_information_aleph_group.dateEndCompany|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_labor_information_aleph_group_show', {'id': labor_information_aleph_group.id}) }}">show</a>
+                    <a href="{{ path('app_labor_information_aleph_group_edit', {'id': labor_information_aleph_group.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_labor_information_aleph_group_new') }}">Create new</a>
+{% endblock %}

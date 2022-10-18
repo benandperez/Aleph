@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SelfAppraisal{% endblock %}
+
+{% block body %}
+    <h1>Edit SelfAppraisal</h1>
+
+    {{ include('self_appraisal/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_self_appraisal_index') }}">back to list</a>
+
+    {{ include('self_appraisal/_delete_form.html.twig') }}
+{% endblock %}

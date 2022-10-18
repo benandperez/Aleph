@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SelfAppraisal{% endblock %}
+
+{% block body %}
+    <h1>SelfAppraisal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ self_appraisal.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ self_appraisal.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_self_appraisal_index') }}">back to list</a>
+
+    <a href="{{ path('app_self_appraisal_edit', {'id': self_appraisal.id}) }}">edit</a>
+
+    {{ include('self_appraisal/_delete_form.html.twig') }}
+{% endblock %}

@@ -27,9 +27,13 @@ class CompanyPosition
     #[ORM\OneToMany(mappedBy: 'companyPosition', targetEntity: Employees::class)]
     private Collection $employees;
 
+    #[ORM\OneToMany(mappedBy: 'companyPosition', targetEntity: LaborInformationAlephGroup::class)]
+    private Collection $laborInformationAlephGroups;
+
     public function __construct()
     {
         $this->employees = new ArrayCollection();
+        $this->laborInformationAlephGroups = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -93,5 +97,35 @@ class CompanyPosition
     public function __toString(): string
     {
         return $this->getName();
+    }
+
+    /**
+     * @return Collection<int, LaborInformationAlephGroup>
+     */
+    public function getLaborInformationAlephGroups(): Collection
+    {
+        return $this->laborInformationAlephGroups;
+    }
+
+    public function addLaborInformationAlephGroup(LaborInformationAlephGroup $laborInformationAlephGroup): self
+    {
+        if (!$this->laborInformationAlephGroups->contains($laborInformationAlephGroup)) {
+            $this->laborInformationAlephGroups->add($laborInformationAlephGroup);
+            $laborInformationAlephGroup->setCompanyPosition($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLaborInformationAlephGroup(LaborInformationAlephGroup $laborInformationAlephGroup): self
+    {
+        if ($this->laborInformationAlephGroups->removeElement($laborInformationAlephGroup)) {
+            // set the owning side to null (unless already changed)
+            if ($laborInformationAlephGroup->getCompanyPosition() === $this) {
+                $laborInformationAlephGroup->setCompanyPosition(null);
+            }
+        }
+
+        return $this;
     }
 }

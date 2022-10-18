@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit LaborInformationAlephGroup{% endblock %}
+
+{% block body %}
+    <h1>Edit LaborInformationAlephGroup</h1>
+
+    {{ include('labor_information_aleph_group/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_labor_information_aleph_group_index') }}">back to list</a>
+
+    {{ include('labor_information_aleph_group/_delete_form.html.twig') }}
+{% endblock %}

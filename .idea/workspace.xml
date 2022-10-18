@@ -5,42 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecdbe0f6-f04a-4b5e-ac14-c52c539768d0" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/public/assets/css/Home-1.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/css/nicepage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/-min-24.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/-min.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/0fd3416c.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/13064dd8-b859-4a0d-8b5b-0944d529a9c2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1384005-fd43df3b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1384005.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1384015-e5bc010a.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/1384015.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/58061-905a8369.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/58061.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/68f64b9d.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/75046ddc-63c4-a8b3-1d53-2745c1f8c894.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/8ad73f3c.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/b5f9e7f9-f0cf-42fb-96c9-3156bc7d64a2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/bg-7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/default-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/dfdf.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/gffgfgg-min.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/gggg-min.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/jkjk-min.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/vbvb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/vbvbvb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/vbvbvbvb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/imagesDash/vvv.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/jquery-1.9.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/js/nicepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Roles.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Roles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EmployeesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EmployeesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/CompanyDepartment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CompanyDepartment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/CompanyPosition.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CompanyPosition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/EmployeeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/EmployeeType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Employees.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Employees.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/PlaceWork.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PlaceWork.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/EmployeesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EmployeesType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/dashboard/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/employees/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/employees/_form.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="stg" />
         <entry key="$PROJECT_DIR$" value="dev" />
       </map>
     </option>
@@ -207,7 +184,7 @@
       <workItem from="1665583669439" duration="1739000" />
       <workItem from="1665598670227" duration="705000" />
       <workItem from="1665602439711" duration="29278000" />
-      <workItem from="1665714928873" duration="12900000" />
+      <workItem from="1665714928873" duration="32520000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1664586862261</created>

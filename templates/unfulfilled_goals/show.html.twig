@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UnfulfilledGoals{% endblock %}
+
+{% block body %}
+    <h1>UnfulfilledGoals</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ unfulfilled_goal.id }}</td>
+            </tr>
+            <tr>
+                <th>UnfulfilledGoals</th>
+                <td>{{ unfulfilled_goal.unfulfilledGoals }}</td>
+            </tr>
+            <tr>
+                <th>ReasonsForNonAchievement</th>
+                <td>{{ unfulfilled_goal.reasonsForNonAchievement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_unfulfilled_goals_index') }}">back to list</a>
+
+    <a href="{{ path('app_unfulfilled_goals_edit', {'id': unfulfilled_goal.id}) }}">edit</a>
+
+    {{ include('unfulfilled_goals/_delete_form.html.twig') }}
+{% endblock %}

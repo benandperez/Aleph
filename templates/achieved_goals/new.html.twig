@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AchievedGoals{% endblock %}
+
+{% block body %}
+    <h1>Create new AchievedGoals</h1>
+
+    {{ include('achieved_goals/_form.html.twig') }}
+
+    <a href="{{ path('app_achieved_goals_index') }}">back to list</a>
+{% endblock %}

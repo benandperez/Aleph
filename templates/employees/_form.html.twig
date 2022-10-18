@@ -283,31 +283,13 @@
                     <div class="col-md-6 d-flex">
                         <div class="card profile-box flex-fill">
                             <div class="card-body">
-                                <h3 class="card-title">Información Laboral ALEPH GROUP</h3>
-                                <ul class="personal-info">
-                                    {# Inicio Tabla #}
-                                    <div class="row">
-                                        <div class="col-lg-6">{{ form_row(form.employeeType) }}</div>
-                                        <div class="col-lg-6">{{ form_row(form.companyPosition) }}</div>
-                                        <div class="col-lg-6">{{ form_row(form.placeWork) }}</div>
-                                        <div class="col-lg-6">{{ form_row(form.companyDepartment) }}</div>
-                                        <div class="col-md-12">
-                                            {{ form_label(form.familyCompany) }}
-                                            {% for child in form.familyCompany %}
-                                                <div class="form-check form-check-inline">
-                                                    {{- form_widget(child) -}}
-                                                    {{- form_label(child, null) -}}
-                                                </div>
-                                            {% endfor %}
-                                        </div>
-                                        <div class="col-md-12">{{ form_row(form.familyCompanyText) }}</div>
-                                        <div class="col-md-12">
-                                            {{ form_label(form.dateJoiningCompany) }}
-                                            <div class="cal-icon">{{ form_widget(form.dateJoiningCompany) }}</div>
-                                        </div>
-                                    </div>
-                                    {# fin Tabla #}
-                                </ul>
+                                <h3 class="card-title">Información Laboral ALEPH GROUP
+                                    {% if employee.id is not empty %}
+                                    <a href="{{ path('app_employees_edit', {'id': employee.id}) }}" class="edit-icon" data-bs-target="#family_info_modal"><i class="fa fa-pencil"></i>
+                                    </a>
+                                    {% endif %}
+                                </h3>
+                                {{ form_row(form.laborInformationAlephGroup) }}
                             </div>
                         </div>
                     </div>

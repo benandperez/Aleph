@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LaborInformationAlephGroup{% endblock %}
+
+{% block body %}
+    <h1>LaborInformationAlephGroup</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ labor_information_aleph_group.id }}</td>
+            </tr>
+            <tr>
+                <th>FamilyCompany</th>
+                <td>{{ labor_information_aleph_group.familyCompany ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>FamilyCompanyText</th>
+                <td>{{ labor_information_aleph_group.familyCompanyText }}</td>
+            </tr>
+            <tr>
+                <th>DateJoiningCompany</th>
+                <td>{{ labor_information_aleph_group.dateJoiningCompany ? labor_information_aleph_group.dateJoiningCompany|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateEndCompany</th>
+                <td>{{ labor_information_aleph_group.dateEndCompany ? labor_information_aleph_group.dateEndCompany|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_labor_information_aleph_group_index') }}">back to list</a>
+
+    <a href="{{ path('app_labor_information_aleph_group_edit', {'id': labor_information_aleph_group.id}) }}">edit</a>
+
+    {{ include('labor_information_aleph_group/_delete_form.html.twig') }}
+{% endblock %}
